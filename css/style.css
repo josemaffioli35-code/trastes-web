@@ -1,0 +1,3100 @@
+/* =========================================================
+   TRASTES — WEB ESTÁTICA
+   HTML + CSS + JS puro. Lista para VS Code + Live Server.
+========================================================= */
+:root{
+  --bg:#063735;
+  --bg-2:#052f2e;
+  --bg-3:#083f3b;
+  --cream:#f5ead8;
+  --cream-2:#e1d4bd;
+  --orange:#ea410e;
+  --orange-2:#ff7a24;
+  --yellow:#f0b51e;
+  --blue:#4458ff;
+  --line:rgba(245,234,216,.16);
+  --font-display:'Anton','Barlow Condensed',Impact,sans-serif;
+  --font-body:'Inter',Arial,sans-serif;
+  --max:1180px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(#ffffff);font-family:var(--font-body);overflow-x:hidden}img{max-width:100%;display:block}a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}.section-dark{position:relative;background:var(--bg);overflow:hidden}.section-dark:before{content:"";position:absolute;inset:0;background-image:url('../assets/textures/plano-guitarra.png');background-size:900px auto;background-position:center;opacity:.045;pointer-events:none}.site-header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:28px;padding:18px clamp(18px,5vw,64px);transition:.25s;background:transparent}.site-header.scrolled{background:rgba(5,47,46,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);letter-spacing:.12em;font-size:16px}.brand-mark{width:24px;height:24px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-family:var(--font-body);font-weight:900;font-size:13px}.nav-links{margin-left:auto;display:flex;gap:34px;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--cream-2)}.nav-links a:hover{color:var(--orange)}.menu-toggle{display:none;margin-left:auto;background:none;border:0;color:var(--cream);font-size:26px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;background:var(--orange);color:white;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:16px;border:1px solid transparent;transition:.2s;cursor:pointer}.btn:hover{background:var(--orange-2);transform:translateY(-2px)}.btn-small{min-height:36px;padding-inline:16px;font-size:13px}.btn-ghost{background:transparent;border-color:var(--line);color:var(--cream)}.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:var(--cream)}.btn-dark{background:var(--bg-2)}.hero{min-height:920px;padding:118px 0 235px}.hero-grid{display:grid;grid-template-columns:.86fr 1.14fr;align-items:center;gap:34px;position:relative;z-index:2}.eyebrow{display:flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--yellow);font-weight:800;font-size:12px}.eyebrow span{width:36px;height:2px;background:var(--yellow)}.eyebrow.orange{color:var(--orange)}.eyebrow.blue{color:var(--blue);justify-content:center}.hero h1,.benefits h2,.center-title,.featured-copy h3,.testimonial-image h2,.final-cta h2{font-family:var(--font-display);text-transform:uppercase;line-height:.93;letter-spacing:.01em;margin:0}.hero h1{font-size:clamp(68px,7.2vw,122px);max-width:720px}.hero h1 .title-line{display:block;white-space:nowrap}.hero h1 em{display:block;color:var(--orange);font-style:italic;white-space:nowrap}.lead{max-width:470px;color:var(--cream-2);line-height:1.75;font-size:17px;margin:28px 0 36px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.hero-art{position:relative;min-height:680px;display:flex;align-items:flex-start;justify-content:flex-end}.hero-art img{width:min(760px,59vw);max-width:none;margin-left:auto;filter:saturate(1.06) contrast(1.03);position:relative;z-index:3}.art-line{position:absolute;top:5%;left:2%;width:390px;height:6px;background:var(--yellow);z-index:2}.art-dot{position:absolute;right:-2%;top:22%;width:80px;height:80px;border-radius:50%;border:2px solid rgba(245,234,216,.4);z-index:2}.rosette{position:absolute;right:-5%;top:2%;width:82px;height:82px;border-radius:50%;border:2px dotted rgba(245,234,216,.55);z-index:2}.decor{position:absolute;pointer-events:none;z-index:1}.hero-wave{width:1000px;left:-100px;bottom:110px;opacity:.96}.cream-swoosh{position:absolute;left:-10%;right:-8%;bottom:-72px;height:360px;background:var(--cream);border-radius:64% 36% 0 0/100% 68% 0 0;transform:rotate(-10deg);transform-origin:left bottom;z-index:1}.cream-swoosh:before{content:"";position:absolute;right:12%;top:-120px;width:520px;height:240px;background:var(--cream);border-radius:55% 45% 0 0/100% 100% 0 0;transform:rotate(8deg)}.stats{position:relative;z-index:3;margin-top:-120px;padding:40px 0 70px;color:var(--bg);background:transparent}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:center}.stats article{text-align:center}.stats strong{display:block;font-family:var(--font-display);font-size:clamp(40px,5vw,74px);line-height:1}.stats span{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:12px}.benefits{padding:110px 0}.benefits h2{font-size:clamp(46px,5.3vw,82px);max-width:770px;margin-bottom:58px}.benefits h2 span,.center-title span,.testimonial-image h2 span,.final-cta h2 span{color:var(--orange)}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);position:relative;z-index:2}.benefit-card{padding:34px;min-height:190px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(5,47,46,.68);transition:.2s}.benefit-card:hover{background:rgba(7,68,64,.85);transform:translateY(-4px)}.benefit-card b{display:grid;place-items:center;width:32px;height:32px;background:var(--yellow);color:var(--bg);font-weight:900;margin-bottom:18px}.benefit-card:nth-child(3n) {border-right:0}.benefit-card h3,.steps h3.benefit-card p,.steps p{color:var(#ffffff);font-size:14px;line-height:1.65;margin:0}.side-left{width:280px;left:-150px;top:10%;opacity:.88}.side-right{width:220px;right:-100px;bottom:6%;opacity:.75}.courses{padding:120px 0}.center-title{text-align:center;font-size:clamp(44px,5vw,76px);margin-bottom:54px}.featured-course{display:grid;grid-template-columns:.92fr 1.08fr;background:var(--orange);min-height:320px;position:relative;z-index:2;overflow:hidden}.featured-copy{padding:52px 44px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.tag{display:inline-block;background:var(--yellow);color:var(--bg);font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-size:12px;padding:8px 12px;margin:0 0 22px}.featured-copy h3{font-size:clamp(42px,4vw,70px);color:white}.featured-copy p{line-height:1.7;color:#ffe5d4;max-width:480px}.featured-course img{width:100%;height:100%;object-fit:cover}.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}.course-card{background:var(--bg-3);border:1px solid var(--line);padding-bottom:28px;overflow:hidden;transition:.2s}.course-card:hover{transform:translateY(-6px);background:#0a4945}.course-card img{height:230px;width:100%;object-fit:cover}.course-card h3,.course-card p,.course-card a{margin-left:24px;margin-right:24px}.course-card h3{margin-top:24px;color:var(--cream)}.course-card a{display:inline-block;margin-top:22px;text-transform:uppercase;font-family:var(--font-display);font-size:15px;color:var(--cream)}.course-card{
+    display: flex;
+    flex-direction: column;
+}.process{padding:120px 0}.process-grid{display:grid;grid-template-columns:1fr 360px 1fr;gap:40px;align-items:center;position:relative;z-index:2}.process-guitar{max-height:670px;margin:auto;filter:drop-shadow(0 0 35px rgba(240,90,40,.55))}.steps{display:flex;flex-direction:column;gap:60px}.steps article{max-width:300px}.steps b{color:var(--orange);font-family:var(--font-display);font-size:32px}.steps-right article:nth-child(1){background:rgba(7,68,64,.8);padding:26px;border:1px solid var(--line)}.testimonials{padding:100px 0;background:#073331}.testimonial-grid{display:grid;grid-template-columns:380px 1fr;gap:70px;align-items:center}.testimonial-image img{height:330px;width:260px;object-fit:cover;margin-top:25px}.testimonial-image h2{font-size:clamp(42px,4vw,66px)}.quote p{font-family:var(--font-display);font-size:clamp(34px,3.6vw,58px);line-height:1.06;margin:0 0 28px}.quote small{color:var(--cream-2);font-weight:700}.final-cta{position:relative;padding:130px 0;background:linear-gradient(rgba(5,47,46,.88),rgba(5,47,46,.95)),url('../assets/textures/plano-guitarra.png');background-size:cover;background-position:center;color:var(--cream);text-align:center}.cta-box{position:relative;z-index:2}.final-cta h2{font-size:clamp(54px,7vw,108px);max-width:760px;margin:auto}.final-cta p{color:var(--cream-2);margin:22px 0 34px}.center-actions{justify-content:center}.site-footer{padding:30px 20px;text-align:center;background:#052a29;color:var(--cream-2);font-size:13px}.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}.delay-1{transition-delay:.12s}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* Decoraciones: los elementos abstractos acompañan el recorrido, no el hero */
+.hero-wave{display:none}
+.hero-wave{
+    position:absolute;
+    left:0;
+
+    /* Baja la onda para que coincida con la guitarra */
+    bottom: -48px;
+
+    width:100%;
+    height:auto;
+
+    z-index:3;
+
+    pointer-events:none;
+    user-select:none;
+}
+.stats{
+    position:relative;
+    overflow:hidden;
+}
+
+.stats-circle{
+    width:300px;
+    height:auto;
+}
+
+.stats-circle-left{
+    left:-85px;
+    top:20px;
+}
+
+.stats-circle-right{
+    right:-85px;
+    bottom:10px;
+}
+.stats-grid{position:relative;z-index:4}
+.journey-wave{width:min(980px,75vw);right:-340px;top:-120px;opacity:.85;transform:rotate(-8deg);z-index:1}
+.courses .container{position:relative;z-index:2}
+@media (max-width:980px){.site-header{padding:14px 18px}.menu-toggle{display:block}.nav-links{position:absolute;top:64px;right:18px;left:18px;display:none;flex-direction:column;background:rgba(5,47,46,.98);border:1px solid var(--line);padding:22px}.nav-links.open{display:flex}.site-header>.btn-small{display:none}.hero{min-height:auto;padding:110px 0 190px}.hero-grid{grid-template-columns:1fr;text-align:left;gap:20px}.hero-art{min-height:auto}.hero-art{min-height:auto}.hero-art img{width:min(620px,104vw);margin:auto}.journey-wave{width:760px;right:-380px;top:-80px}.stats-circle-left{width:270px;left:-190px}.stats-circle-right{width:240px;right:-165px}.stats-grid,.benefit-grid{grid-template-columns:repeat(2,1fr)}.benefit-card:nth-child(3n){border-right:1px solid var(--line)}.featured-course,.testimonial-grid{grid-template-columns:1fr}.featured-course img{height:440px}.course-grid{grid-template-columns:1fr 1fr}.process-grid{grid-template-columns:1fr}.steps{gap:24px}.steps article{max-width:none}.process-guitar{max-height:560px;order:-1}.testimonial-image img{width:100%;height:380px}.quote p{font-size:38px}.cream-swoosh{height:260px;bottom:-80px}}@media (max-width:620px){.container{width:min(100% - 28px,var(--max))}.brand{font-size:14px}.hero h1{font-size:50px}.hero h1 .title-line,.hero h1 em{white-space:normal}.lead{font-size:15px}.btn{width:100%;font-size:14px}.stats{margin-top:-95px;padding-top:20px}.stats-grid{gap:10px}.stats strong{font-size:38px}.stats span{font-size:10px}.benefits,.courses,.process{padding:78px 0}.benefits h2,.center-title{font-size:42px}.benefit-grid,.course-grid,.stats-grid{grid-template-columns:1fr}.benefit-card{border-right:0!important}.featured-copy{padding:34px 24px}.featured-copy h3{font-size:42px}.featured-course img{height:330px}.course-card img{height:220px}.process-guitar{max-height:470px}.steps-right article:nth-child(1){padding:20px}.quote p{font-size:32px}.final-cta{padding:90px 0}.final-cta h2{font-size:50px}.journey-wave{width:620px;right:-360px;top:-40px;opacity:.55}.stats-circle-left{width:230px;left:-170px;top:-40px}.stats-circle-right{width:210px;right:-160px;top:-35px}.side-left,.side-right{opacity:.35}.art-line,.art-dot,.rosette{display:none}}
+
+/* =========================================================
+   AJUSTES FINOS SEGÚN REFERENCIA VISUAL
+   - Hero en 3 líneas sin encimar
+   - Swoosh vainilla integrado al hero
+   - Estadísticas sobre fondo vainilla
+   - Decoraciones laterales/ondas ubicadas como stickers
+   - Cómo funciona alternado 01 derecha / 02 izquierda / ...
+========================================================= */
+.hero{
+  min-height:880px;
+  padding:118px 0 170px;
+  overflow:visible;
+}
+.hero-grid{
+  grid-template-columns:.82fr 1.18fr;
+  gap:12px;
+}
+.hero h1{
+  font-size:clamp(66px,6.6vw,112px);
+  line-height:1.02;
+  letter-spacing:.005em;
+  max-width:620px;
+}
+.hero h1 em,
+.hero h1 .title-line{line-height:1.02;}
+.hero-art{
+  min-height:650px;
+  align-items:flex-start;
+  transform:none!important;
+}
+.hero-art img{
+  width:min(820px,63vw);
+  margin-top:-20px;
+  transform:none!important;
+  animation:none!important;
+}
+.hero-art:hover img{transform:none!important;}
+.cream-swoosh{
+  left:-7%;
+  right:-4%;
+  bottom:-8px;
+  height:335px;
+  background:var(--cream);
+  transform:skewY(-22deg) translateY(18px);
+  border-radius:0;
+  z-index:1;
+}
+.cream-swoosh:before{
+  right:7%;
+  top:-165px;
+  width:670px;
+  height:300px;
+  background:var(--cream);
+  border-radius:58% 42% 0 0 / 100% 100% 0 0;
+  transform:rotate(9deg);
+}
+.stats{
+  background:var(--cream);
+  margin-top:0;
+  padding:54px 0 82px;
+  color:var(--bg);
+  overflow:visible;
+  z-index:2;
+}
+.stats strong{color:var(--bg);}
+.stats{
+    position:relative;
+    overflow:hidden;
+}
+
+.stats-circle{
+    width:300px;
+    height:auto;
+}
+
+.stats-circle-left{
+    left:-85px;
+    top:20px;
+}
+
+.stats-circle-right{
+    right:-85px;
+    bottom:10px;
+}
+.benefits{padding:102px 0 120px;overflow:visible;}
+.side-left{width:420px;left:-270px;top:-105px;opacity:.92;z-index:1;}
+.side-right{width:310px;right:-180px;top:-50px;bottom:auto;opacity:.9;z-index:1;}
+.journey-wave{
+  width:min(1040px,82vw);
+  left:-250px;
+  right:auto;
+  top:-70px;
+  opacity:.88;
+  transform:rotate(0deg);
+  z-index:1;
+}
+.courses{padding-top:150px;overflow:visible;}
+.courses .container{position:relative;z-index:3;}
+
+/* Íconos con colores alternados como en la referencia */
+.benefit-card b{color:#061f1e;}
+.benefit-card:nth-child(1) b{background:var(--yellow);}
+.benefit-card:nth-child(2) b{background:#315dff;color:white;}
+.benefit-card:nth-child(3) b{background:var(--orange);color:white;}
+.benefit-card:nth-child(4) b{background:var(--yellow);}
+.benefit-card:nth-child(5) b{background:#315dff;color:white;}
+.benefit-card:nth-child(6) b{background:var(--orange);color:white;}
+
+/* Reemplaza la grilla anterior por composición alternada */
+.process-grid,.steps,.steps-left,.steps-right{display:contents;}
+.process{padding:118px 0 130px;}
+.process-map{
+  position:relative;
+  min-height:760px;
+  z-index:2;
+  max-width:980px;
+  margin:0 auto;
+}
+.process-guitar{
+  position:absolute;
+  left:50%;
+  top:52%;
+  transform:translate(-50%,-50%);
+  max-height:650px;
+  width:auto;
+  z-index:2;
+  filter:drop-shadow(0 0 35px rgba(240,90,40,.55));
+}
+.process-step{
+  position:absolute;
+  width:285px;
+  min-height:128px;
+  padding:22px 24px;
+  background:transparent;
+  border:0;
+  z-index:3;
+}
+.process-step b{
+  display:block;
+  font-family:var(--font-display);
+  font-size:28px;
+  line-height:1;
+  color:var(--orange);
+  margin-bottom:12px;
+}
+.process-step h3{
+  font-family:var(--font-display);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin:0 0 8px;
+}
+.process-step p{color:var(--cream-2);font-size:13px;line-height:1.55;margin:0;}
+.step-01{right:2%;top:11%;background:rgba(7,68,64,.88);border:1px solid var(--line);}
+.step-02{left:4%;top:24%;}
+.step-03{right:5%;top:39%;}
+.step-04{left:2%;top:58%;}
+.step-05{right:7%;top:70%;}
+.delay-step-1{transition-delay:.05s}.delay-step-2{transition-delay:.16s}.delay-step-3{transition-delay:.27s}.delay-step-4{transition-delay:.38s}.delay-step-5{transition-delay:.49s}
+
+@media (max-width:980px){
+  .hero{padding-bottom:170px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:clamp(56px,11vw,96px);max-width:720px;}
+  .hero-art img{width:min(700px,100vw);margin-top:0;}
+  .cream-swoosh{height:260px;bottom:-35px;}
+  .cream-swoosh:before{width:430px;height:200px;top:-100px;}
+  .stats-circle-left{width:320px;left:-215px;top:-220px;}
+  .stats-circle-right{width:320px;right:-215px;top:-220px;}
+  .side-left{width:320px;left:-225px;top:-80px;}
+  .side-right{width:250px;right:-160px;top:-40px;}
+  .journey-wave{width:760px;left:-310px;top:-50px;}
+  .process-map{min-height:auto;display:grid;grid-template-columns:1fr;gap:18px;max-width:620px;}
+  .process-guitar{position:relative;left:auto;top:auto;transform:none;max-height:560px;margin:0 auto 20px;order:0;}
+  .process-step{position:relative;left:auto!important;right:auto!important;top:auto!important;width:100%;min-height:auto;}
+  .step-01{order:1}.step-02{order:2}.step-03{order:3}.step-04{order:4}.step-05{order:5}
+}
+@media (max-width:620px){
+  .hero h1{font-size:48px;line-height:1.04;}
+  .hero h1 em,.hero h1 .title-line{white-space:nowrap;line-height:1.04;}
+  .hero-art img{width:112vw;margin-left:-8vw;}
+  .stats{padding:42px 0 58px;}
+  .stats-circle-left{width:260px;left:-190px;top:-175px;}
+  .stats-circle-right{width:260px;right:-190px;top:-175px;}
+  .side-left{width:270px;left:-210px;top:-60px;opacity:.85;}
+  .side-right{width:220px;right:-165px;top:-30px;opacity:.82;}
+  .journey-wave{width:620px;left:-360px;top:-25px;opacity:.75;}
+  .process-guitar{max-height:470px;}
+}
+
+/* =========================================================
+   CORRECCIONES 25/06 — Home + sección ¿Cómo funciona?
+========================================================= */
+.hero h1{
+  line-height:1.12 !important;
+  font-size:clamp(62px,6.1vw,104px) !important;
+  letter-spacing:.006em;
+}
+.hero h1 .title-line,
+.hero h1 em{
+  line-height:1.12 !important;
+  display:block;
+}
+.hero h1 em{
+  margin:.02em 0 .04em;
+}
+.lead{
+  margin-top:30px;
+}
+
+.process{
+  padding:118px 0 145px !important;
+}
+.process-map{
+  max-width:1120px !important;
+  min-height:820px !important;
+  margin:0 auto !important;
+  position:relative !important;
+}
+.process-guitar{
+  position:absolute !important;
+  left:50% !important;
+  top:55% !important;
+  transform:translate(-50%,-50%) !important;
+  max-height:640px !important;
+  width:auto !important;
+  z-index:2 !important;
+}
+.process-step{
+  position:absolute !important;
+  width:300px !important;
+  min-height:132px !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  z-index:4 !important;
+}
+.process-step.step-01{
+  right:7% !important;
+  top:7% !important;
+  padding:28px 30px !important;
+  background:rgba(7,68,64,.88) !important;
+  border:1px solid var(--line) !important;
+}
+.process-step.step-02{
+  left:8% !important;
+  top:23% !important;
+}
+.process-step.step-03{
+  right:8% !important;
+  top:36% !important;
+}
+.process-step.step-04{
+  left:6% !important;
+  top:58% !important;
+}
+.process-step.step-05{
+  right:10% !important;
+  top:68% !important;
+}
+.process-step b{
+  font-size:34px !important;
+  margin-bottom:14px !important;
+}
+.process-step h3{
+  font-size:24px !important;
+  line-height:1.02 !important;
+}
+.process-step p{
+  font-size:15px !important;
+  line-height:1.55 !important;
+  max-width:260px;
+}
+
+@media (max-width:980px){
+  .hero h1{font-size:clamp(52px,10vw,86px) !important;line-height:1.12 !important;}
+  .hero h1 .title-line,.hero h1 em{line-height:1.12 !important;}
+  .process-map{min-height:auto !important;display:grid !important;grid-template-columns:1fr !important;gap:20px !important;max-width:620px !important;}
+  .process-guitar{position:relative !important;left:auto !important;top:auto !important;transform:none !important;max-height:560px !important;margin:0 auto 18px !important;}
+  .process-step,.process-step.step-01,.process-step.step-02,.process-step.step-03,.process-step.step-04,.process-step.step-05{
+    position:relative !important;left:auto !important;right:auto !important;top:auto !important;width:100% !important;min-height:auto !important;padding:20px 22px !important;
+  }
+}
+@media (max-width:620px){
+  .hero h1{font-size:46px !important;line-height:1.14 !important;}
+  .hero h1 .title-line,.hero h1 em{line-height:1.14 !important;white-space:normal !important;}
+  .process-guitar{max-height:460px !important;}
+}
+
+
+/* =========================================================
+   AJUSTES FINALES 25/06 — Hero referencia + metodología
+   Estas reglas pisan correcciones anteriores para volver a la
+   proporción del mockup enviado.
+========================================================= */
+@media (min-width:981px){
+  .hero{
+    min-height:820px !important;
+    padding:118px 0 225px !important;
+    overflow:hidden !important;
+  }
+  .hero-grid{
+    grid-template-columns:.95fr 1.05fr !important;
+    gap:32px !important;
+    align-items:start !important;
+    max-width:1180px !important;
+  }
+  .hero-copy{padding-top:96px !important;}
+  .hero h1{
+    font-size:clamp(70px,5.15vw,92px) !important;
+    line-height:1.05 !important;
+    max-width:600px !important;
+    letter-spacing:.004em !important;
+  }
+  .hero h1 .title-line,
+  .hero h1 em{
+    line-height:1.05 !important;
+    white-space:nowrap !important;
+  }
+  .hero h1 em{margin:.045em 0 .055em !important;}
+  .lead{
+    max-width:455px !important;
+    margin:28px 0 34px !important;
+    color:rgba(245,234,216,.72) !important;
+    position:relative !important;
+    z-index:6 !important;
+  }
+  .hero-actions{position:relative !important;z-index:7 !important;}
+  .hero-art{
+    min-height:610px !important;
+    align-items:flex-start !important;
+    justify-content:flex-end !important;
+    pointer-events:none !important;
+  }
+  .hero-art img{
+    width:min(710px,55vw) !important;
+    margin-top:-2px !important;
+    margin-right:-22px !important;
+    transform:none !important;
+    animation:none !important;
+  }
+  .cream-swoosh{
+    left:-16% !important;
+    right:-12% !important;
+    bottom:-155px !important;
+    height:360px !important;
+    transform:rotate(-11deg) !important;
+    transform-origin:left bottom !important;
+    border-radius:0 !important;
+    z-index:1 !important;
+  }
+  .cream-swoosh:before{
+    right:11% !important;
+    top:-150px !important;
+    width:590px !important;
+    height:285px !important;
+    border-radius:55% 45% 0 0/100% 100% 0 0 !important;
+    transform:rotate(9deg) !important;
+  }
+  .stats{
+    margin-top:-82px !important;
+    padding:92px 0 72px !important;
+    background:var(--cream) !important;
+    z-index:3 !important;
+  }
+}
+
+/* Metodología: composición compacta como Figma, con pasos alternados */
+.process .center-title{
+  max-width:820px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.process-map{
+  max-width:880px !important;
+  min-height:690px !important;
+}
+.process-guitar{
+  top:55% !important;
+  max-height:555px !important;
+}
+.process-step{
+  width:255px !important;
+  min-height:auto !important;
+}
+.process-step.step-01{
+  right:5% !important;
+  top:8% !important;
+  padding:24px 26px !important;
+}
+.process-step.step-02{
+  left:7% !important;
+  top:20% !important;
+}
+.process-step.step-03{
+  right:7% !important;
+  top:34% !important;
+}
+.process-step.step-04{
+  left:4% !important;
+  top:52% !important;
+}
+.process-step.step-05{
+  right:10% !important;
+  top:62% !important;
+}
+.process-step b{font-size:30px !important;}
+.process-step h3{font-size:21px !important;}
+.process-step p{font-size:14px !important;}
+
+@media (max-width:980px){
+  .hero{overflow:hidden !important;}
+  .hero-copy{padding-top:0 !important;}
+  .cream-swoosh{bottom:-70px !important;}
+  .process-map{min-height:auto !important;}
+}
+
+@media (max-width:620px){
+  .hero h1{font-size:46px !important;line-height:1.14 !important;}
+  .hero h1 .title-line,.hero h1 em{line-height:1.14 !important;white-space:normal !important;}
+}
+
+/* =========================================================
+   AJUSTE 25/06 — stickers originales recortados del Figma
+   Usamos los PNG provistos, sin recrearlos con CSS.
+========================================================= */
+.hero .cream-swoosh.hero-vector,
+.cream-swoosh.hero-vector{
+  display:block !important;
+  position:absolute !important;
+  left:0 !important;
+  right:auto !important;
+  bottom:-2px !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:none !important;
+  background:none !important;
+  transform:none !important;
+  border-radius:0 !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+  user-select:none !important;
+}
+.cream-swoosh.hero-vector::before{display:none !important;content:none !important;}
+.hero-grid{z-index:4 !important;}
+.hero-art{z-index:3 !important;}
+.hero-copy{z-index:5 !important;}
+
+/* Posición de stickers laterales según referencia */
+.stats,
+.benefits,
+.courses{overflow:visible !important;}
+.stats-circle-left{
+  width:336px !important;
+  height:auto !important;
+  left:-150px !important;
+  top:-82px !important;
+  opacity:1 !important;
+  transform:none !important;
+  z-index:5 !important;
+}
+.stats-circle-right{
+  width:252px !important;
+  height:auto !important;
+  right:-96px !important;
+  top:-70px !important;
+  opacity:1 !important;
+  transform:none !important;
+  z-index:5 !important;
+}
+.side-left{
+  width:343px !important;
+  height:auto !important;
+  left:-126px !important;
+  top:-18px !important;
+  opacity:1 !important;
+  transform:none !important;
+  z-index:1 !important;
+}
+.side-right{
+  width:369px !important;
+  height:auto !important;
+  right:-175px !important;
+  top:-10px !important;
+  bottom:auto !important;
+  opacity:1 !important;
+  transform:none !important;
+  z-index:1 !important;
+}
+.journey-wave{
+  width:1004px !important;
+  max-width:none !important;
+  height:auto !important;
+  left:auto !important;
+  right:-365px !important;
+  top:-165px !important;
+  opacity:1 !important;
+  transform:none !important;
+  z-index:1 !important;
+}
+.benefits .container,
+.courses .container{position:relative;z-index:3;}
+
+/* Hero vuelve a escala de referencia y sin que la forma tape el texto */
+@media (min-width:981px){
+  .hero{
+    min-height:850px !important;
+    padding:118px 0 250px !important;
+    overflow:hidden !important;
+  }
+  .hero-grid{
+    grid-template-columns:.88fr 1.12fr !important;
+    gap:34px !important;
+  }
+  .hero h1{
+    font-size:clamp(70px,5.35vw,98px) !important;
+    line-height:1.08 !important;
+    max-width:630px !important;
+  }
+  .hero h1 .title-line,
+  .hero h1 em{
+    line-height:1.08 !important;
+    white-space:nowrap !important;
+  }
+  .hero-art img{
+    width:min(760px,58vw) !important;
+    margin-top:-10px !important;
+    margin-right:-35px !important;
+  }
+  .stats{
+    margin-top:-4px !important;
+    padding:76px 0 74px !important;
+  }
+}
+
+/* Metodología de trabajo: orden alternado como referencia */
+.process .center-title{margin-bottom:38px !important;}
+.process-map{
+  max-width:980px !important;
+  min-height:730px !important;
+}
+.process-guitar{
+  max-height:575px !important;
+  top:55% !important;
+}
+.process-step.step-01{right:5% !important;top:6% !important;}
+.process-step.step-02{left:7% !important;top:20% !important;}
+.process-step.step-03{right:7% !important;top:35% !important;}
+.process-step.step-04{left:5% !important;top:54% !important;}
+.process-step.step-05{right:9% !important;top:67% !important;}
+
+@media (max-width:980px){
+  .cream-swoosh.hero-vector{bottom:-1px !important;width:135% !important;left:-18% !important;}
+  .stats-circle-left{width:240px !important;left:-140px !important;top:-52px !important;}
+  .stats-circle-right{width:200px !important;right:-112px !important;top:-42px !important;}
+  .side-left{width:245px !important;left:-130px !important;top:10px !important;}
+  .side-right{width:250px !important;right:-150px !important;top:20px !important;}
+  .journey-wave{width:760px !important;right:-430px !important;top:-105px !important;}
+}
+
+@media (max-width:620px){
+  .cream-swoosh.hero-vector{width:170% !important;left:-38% !important;bottom:-1px !important;}
+  .stats-circle-left{width:190px !important;left:-125px !important;top:-30px !important;}
+  .stats-circle-right{width:170px !important;right:-118px !important;top:-28px !important;}
+  .side-left{width:210px !important;left:-135px !important;top:18px !important;opacity:.75 !important;}
+  .side-right{width:220px !important;right:-155px !important;top:60px !important;opacity:.75 !important;}
+  .journey-wave{width:580px !important;right:-365px !important;top:-72px !important;opacity:.82 !important;}
+}
+
+/* AJUSTE DECORACIÓN STATS */
+.stats .stats-circle{
+    width:320px !important;
+    height:auto !important;
+    max-width:none !important;
+}
+
+.stats .stats-circle-left{
+    left:-55px !important;
+    top:10px !important;
+}
+
+.stats .stats-circle-right{
+    right:-55px !important;
+    bottom:0 !important;
+}
+
+/* ===== BENEFICIOS ===== */
+
+.benefits h2{
+    line-height:1.15;
+}
+
+/* =======================================
+   AJUSTES GENERALES DE TIPOGRAFÍA
+======================================= */
+
+h1{
+    line-height: 1.05 !important;
+}
+
+h2{
+    line-height: 1.15 !important;
+}
+
+h3{
+    line-height: 1.22 !important;
+}
+
+/* ==========================================
+   BENEFICIOS - ANULAR HOVER DEFINITIVO
+========================================== */
+
+.benefits .benefit-grid .benefit-card,
+.benefits .benefit-grid article{
+    background: transparent !important;
+    color: var(--cream) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.benefits .benefit-grid .benefit-card:hover,
+.benefits .benefit-grid article:hover{
+    background: transparent !important;
+    color: var(--cream) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.benefits .benefit-grid .benefit-card:hover *,
+.benefits .benefit-grid article:hover *{
+    color: inherit !important;
+}
+
+
+
+/* ==========================================
+   AJUSTE TIPOGRAFÍA - BENEFICIOS
+========================================== */
+
+.benefits .benefit-card h3{
+    color:#ffffff !important;
+    font-size:1.45rem !important;
+    line-height:1.25 !important;
+    font-weight:700;
+}
+
+.benefits .benefit-card p{
+    color:#ffffff !important;
+    font-size:1.05rem !important;
+    line-height:1.7 !important;
+}
+
+/* Menos separación entre el título y la bajada */
+.benefits .benefit-card h3{
+    margin-bottom: 10px !important;
+}
+
+.benefits .benefit-card p{
+    margin-top: 0 !important;
+}
+.benefits .benefit-card h3{
+    margin-bottom: 4px !important;
+}
+
+/* Corrige el color de todos los títulos principales */
+.section-dark h2{
+    color: var(--cream) !important;
+}
+
+.section-dark h2 span{
+    color: var(--orange) !important;
+}
+
+/* ==========================================
+   CORRECCIÓN DEFINITIVA COLOR TEXTOS OSCUROS
+========================================== */
+
+/* Títulos grandes */
+.hero h1,
+.hero h1 span,
+.benefits h2,
+.results h2,
+.cta h2{
+    color: var(--cream) !important;
+}
+
+/* Palabras naranjas */
+.hero h1 em,
+.hero h1 .orange,
+.benefits h2 span,
+.results h2 span,
+.cta h2 span{
+    color: var(--orange) !important;
+}
+
+/* Títulos internos de cards y pasos */
+.benefit-card h3,
+.steps h3,
+.step-card h3,
+.methodology h3,
+.methodology-card h3,
+.process h3,
+.process-card h3{
+    color: #ffffff !important;
+}
+
+/* Textos/bajadas */
+.benefit-card p,
+.steps p,
+.step-card p,
+.methodology p,
+.methodology-card p,
+.process p,
+.process-card p{
+    color: #ffffff !important;
+}
+.testimonials blockquote,
+.testimonial blockquote,
+.testimonials .quote,
+.testimonial .quote{
+    color: var(--cream) !important;
+}
+
+/* SOLO el texto del testimonio */
+.testimonial blockquote,
+.testimonial blockquote *,
+.testimonials blockquote,
+.testimonials blockquote *{
+    color: var(--cream) !important;
+}
+
+/* ===== CURSOS ===== */
+
+.course-card h3{
+    color: var(--cream) !important;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    margin-bottom: .65rem;
+}
+
+.course-card p{
+    color: var(--cream-2) !important;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.course-card a{
+    color: var(--cream);
+}
+
+/* ===========================
+   Botón en cards de cursos
+=========================== */
+
+.course-card a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: auto;
+    padding: 12px 22px;
+
+    background: var(--orange);
+    color: var(--cream);
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: .82rem;
+    letter-spacing: .08em;
+
+    border: 2px solid var(--orange);
+
+    transition: .25s ease;
+    cursor: pointer;
+}
+
+.course-card a:hover{
+    background: transparent;
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+/* ==========================================
+   METODOLOGÍA - CORRECCIÓN FINAL
+========================================== */
+
+/* DESKTOP */
+@media (min-width: 769px){
+
+  .methodology-layout{
+    position: relative !important;
+    min-height: 680px !important;
+  }
+
+  .method-guitar{
+    position: absolute !important;
+    left: 50% !important;
+    top: 52% !important;
+    width: 245px !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2 !important;
+  }
+
+  .method-step{
+    position: absolute !important;
+    width: 310px !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .step-02,
+  .step-04{
+    left: 9% !important;
+  }
+
+  .step-01,
+  .step-03,
+  .step-05{
+    right: 9% !important;
+  }
+
+  .step-01{ top: 10px !important; }
+  .step-02{ top: 130px !important; }
+  .step-03{ top: 260px !important; }
+  .step-04{ top: 440px !important; }
+  .step-05{ top: 540px !important; }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px){
+
+  .methodology{
+    padding: 70px 0 !important;
+  }
+
+  .methodology .center-title{
+    text-align: left !important;
+    font-size: clamp(2.5rem, 12vw, 4rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 45px !important;
+  }
+
+  .methodology-layout{
+    position: relative !important;
+    min-height: auto !important;
+
+    display: grid !important;
+    grid-template-columns: 95px 1fr !important;
+    gap: 0 22px !important;
+
+    align-items: start !important;
+  }
+
+  .method-guitar{
+    position: sticky !important;
+    top: 90px !important;
+
+    grid-column: 1 !important;
+    grid-row: 1 / 6 !important;
+
+    width: 95px !important;
+    max-width: 95px !important;
+
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
+    z-index: 1 !important;
+  }
+
+  .method-step,
+  .step-01,
+  .step-02,
+  .step-03,
+  .step-04,
+  .step-05{
+    position: relative !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    inset: auto !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    grid-column: 2 !important;
+
+    opacity: 1 !important;
+    transform: none !important;
+    cursor: default !important;
+
+    padding: 0 0 34px 0 !important;
+    margin: 0 !important;
+  }
+
+  .method-step::after,
+  .method-step.active::after{
+    display: none !important;
+  }
+
+  .method-step b{
+    font-size: 2rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .method-step h3{
+    font-size: 1.15rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 8px !important;
+    color: #fff !important;
+  }
+
+  .method-step p{
+    font-size: .95rem !important;
+    line-height: 1.45 !important;
+    color: #fff !important;
+  }
+}
+
+/* ==========================================
+/* ==========================================
+   PROCESS / METODOLOGÍA - ALINEACIÓN DESKTOP
+========================================== */
+
+@media (min-width: 769px){
+
+  .process .process-map{
+    position: relative !important;
+  }
+
+  .process .process-step{
+    position: absolute !important;
+    width: 310px !important;
+  }
+
+  .process .step-01,
+  .process .step-03,
+  .process .step-05{
+    left: 64% !important;
+    right: auto !important;
+  }
+
+  .process .step-02,
+  .process .step-04{
+    left: 13% !important;
+    right: auto !important;
+  }
+
+  .process .step-01{ top: 0 !important; }
+  .process .step-02{ top: 130px !important; }
+  .process .step-03{ top: 255px !important; }
+  .process .step-04{ top: 430px !important; }
+  .process .step-05{ top: 520px !important; }
+}
+
+/* =========================================================
+   MOBILE REAL — SOLO CELULAR
+   No afecta desktop/tablet grande
+========================================================= */
+
+@media (max-width: 768px){
+
+  body{
+    overflow-x: hidden;
+  }
+
+  .container{
+    width: min(100% - 32px, 520px) !important;
+  }
+
+  .site-header{
+    padding: 14px 18px !important;
+  }
+
+  .brand{
+    font-size: 13px !important;
+  }
+
+  .nav-links{
+    top: 58px !important;
+  }
+
+  /* HERO */
+  .hero{
+    min-height: auto !important;
+    padding: 92px 0 120px !important;
+  }
+
+  .hero-grid{
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 34px !important;
+  }
+
+  .hero-copy{
+    padding-top: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .eyebrow{
+    font-size: 10px !important;
+    letter-spacing: .14em !important;
+  }
+
+  .hero h1{
+    font-size: clamp(44px, 13vw, 62px) !important;
+    line-height: .98 !important;
+    max-width: 100% !important;
+  }
+
+  .hero h1 .title-line,
+  .hero h1 em{
+    white-space: normal !important;
+    line-height: .98 !important;
+  }
+
+  .lead{
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    max-width: 95% !important;
+    margin: 22px 0 26px !important;
+  }
+
+  .hero-actions{
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .btn{
+    width: 100% !important;
+    min-height: 46px !important;
+    font-size: 13px !important;
+    padding: 0 18px !important;
+  }
+
+  .hero-art{
+    min-height: auto !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .hero-art img{
+    width: 118% !important;
+    max-width: none !important;
+    margin: -10px -9% 0 !important;
+  }
+
+  .cream-swoosh.hero-vector{
+    width: 190% !important;
+    left: -52% !important;
+    bottom: -2px !important;
+  }
+
+  /* STATS */
+  .stats{
+    padding: 44px 0 54px !important;
+    margin-top: 0 !important;
+  }
+
+  .stats-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 26px 12px !important;
+  }
+
+  .stats strong{
+    font-size: 40px !important;
+  }
+
+  .stats span{
+    font-size: 10px !important;
+  }
+
+  .stats-circle-left{
+    width: 150px !important;
+    left: -95px !important;
+    top: -20px !important;
+  }
+
+  .stats-circle-right{
+    width: 140px !important;
+    right: -95px !important;
+    top: -18px !important;
+  }
+
+  /* SECCIONES GENERALES */
+  .benefits,
+  .courses,
+  .process,
+  .testimonials,
+  .final-cta{
+    padding: 72px 0 !important;
+  }
+
+  .benefits h2,
+  .center-title,
+  .testimonial-image h2,
+  .final-cta h2{
+    font-size: clamp(38px, 11vw, 54px) !important;
+    line-height: 1 !important;
+    text-align: left !important;
+  }
+
+  /* BENEFICIOS */
+  .benefit-grid{
+    grid-template-columns: 1fr !important;
+    border: 0 !important;
+    gap: 14px !important;
+  }
+
+  .benefit-card{
+    border: 1px solid var(--line) !important;
+    padding: 24px 22px !important;
+    min-height: auto !important;
+    background: rgba(5,47,46,.55) !important;
+  }
+
+  .benefit-card h3{
+    font-size: 1.15rem !important;
+  }
+
+  .benefit-card p{
+    font-size: .95rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .side-left,
+  .side-right,
+  .journey-wave{
+    opacity: .35 !important;
+    pointer-events: none !important;
+  }
+
+  /* CURSOS */
+  .featured-course{
+    grid-template-columns: 1fr !important;
+  }
+
+  .featured-copy{
+    padding: 30px 22px !important;
+  }
+
+  .featured-copy h3{
+    font-size: clamp(34px, 10vw, 48px) !important;
+  }
+
+  .featured-course img{
+    height: 310px !important;
+    object-fit: cover !important;
+  }
+
+  .course-grid{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .course-card img{
+    height: 220px !important;
+  }
+
+  .course-card h3,
+  .course-card p,
+  .course-card a{
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+  /* METODOLOGÍA */
+  .process-map{
+    min-height: auto !important;
+    display: grid !important;
+    grid-template-columns: 92px 1fr !important;
+    gap: 0 20px !important;
+  }
+
+  .process-guitar{
+    position: sticky !important;
+    top: 86px !important;
+    grid-column: 1 !important;
+    grid-row: 1 / 6 !important;
+    width: 92px !important;
+    max-height: none !important;
+    transform: none !important;
+    left: auto !important;
+    top: 86px !important;
+  }
+
+  .process-step,
+  .process-step.step-01,
+  .process-step.step-02,
+  .process-step.step-03,
+  .process-step.step-04,
+  .process-step.step-05{
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: auto !important;
+    padding: 0 0 30px !important;
+    background: transparent !important;
+    border: 0 !important;
+    grid-column: 2 !important;
+  }
+
+  .process-step b{
+    font-size: 26px !important;
+  }
+
+  .process-step h3{
+    font-size: 20px !important;
+  }
+
+  .process-step p{
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* TESTIMONIOS */
+  .testimonial-grid{
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .testimonial-image img{
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+  }
+
+  .quote p{
+    font-size: clamp(28px, 8vw, 38px) !important;
+    line-height: 1.08 !important;
+  }
+
+  /* CTA FINAL */
+  .final-cta h2{
+    text-align: center !important;
+  }
+
+  .final-cta p{
+    font-size: 15px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE — METODOLOGÍA COMO REFERENCIA
+   Solo modifica la sección #metodo en pantallas chicas
+========================================================= */
+
+@media (max-width: 768px){
+
+  .process{
+    padding: 80px 0 90px !important;
+    overflow: hidden !important;
+  }
+
+  .process .eyebrow{
+    justify-content: center !important;
+    text-align: center !important;
+    margin-bottom: 18px !important;
+  }
+
+  .process .center-title{
+    text-align: center !important;
+    font-size: clamp(44px, 13vw, 70px) !important;
+    line-height: .92 !important;
+    margin-bottom: 70px !important;
+  }
+
+  .process-map{
+    position: relative !important;
+    display: block !important;
+    min-height: 980px !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .process-guitar{
+    position: absolute !important;
+    left: -150px !important;
+    top: 20px !important;
+    width: 280px !important;
+    max-width: none !important;
+    max-height: none !important;
+    transform: none !important;
+    z-index: 1 !important;
+    filter: drop-shadow(0 0 28px rgba(240,90,40,.55)) !important;
+  }
+
+  .process-step,
+  .process-step.step-01,
+  .process-step.step-02,
+  .process-step.step-03,
+  .process-step.step-04,
+  .process-step.step-05{
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    width: calc(100% - 130px) !important;
+    margin-left: 130px !important;
+    padding: 0 0 54px 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    z-index: 3 !important;
+  }
+
+  .process-step b{
+    display: block !important;
+    font-size: 42px !important;
+    line-height: .9 !important;
+    margin-bottom: 18px !important;
+    color: var(--orange) !important;
+  }
+
+  .process-step h3{
+    font-size: 28px !important;
+    line-height: 1 !important;
+    margin: 0 0 12px 0 !important;
+    color: #fff !important;
+    max-width: 240px !important;
+  }
+
+  .process-step p{
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+    color: #fff !important;
+    max-width: 250px !important;
+  }
+}
+/* =========================================================
+   MOBILE — METODOLOGÍA AJUSTADA REAL
+   Solo afecta mobile
+========================================================= */
+
+@media (max-width: 768px){
+
+  .process{
+    padding: 68px 0 76px !important;
+    overflow: hidden !important;
+  }
+
+  .process .eyebrow{
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .process .center-title{
+    text-align: center !important;
+    font-size: clamp(34px, 10vw, 46px) !important;
+    line-height: .98 !important;
+    margin-bottom: 44px !important;
+  }
+
+  .process-map{
+    position: relative !important;
+    display: block !important;
+    min-height: 720px !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .process-guitar{
+    position: absolute !important;
+    left: -82px !important;
+    top: 12px !important;
+    width: 190px !important;
+    max-width: none !important;
+    max-height: none !important;
+    transform: none !important;
+    z-index: 1 !important;
+  }
+
+  .process-step,
+  .process-step.step-01,
+  .process-step.step-02,
+  .process-step.step-03,
+  .process-step.step-04,
+  .process-step.step-05{
+    position: relative !important;
+    inset: auto !important;
+    width: calc(100% - 118px) !important;
+    margin-left: 118px !important;
+    padding: 0 0 34px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    z-index: 3 !important;
+  }
+
+  .process-step b{
+    font-size: 30px !important;
+    line-height: 1 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .process-step h3{
+    font-size: 18px !important;
+    line-height: 1.05 !important;
+    margin: 0 0 8px 0 !important;
+    max-width: 190px !important;
+  }
+
+  .process-step p{
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    max-width: 210px !important;
+  }
+}
+
+@media (max-width: 430px){
+
+  .process-map{
+    min-height: 700px !important;
+  }
+
+  .process-guitar{
+    left: -74px !important;
+    width: 176px !important;
+  }
+
+  .process-step,
+  .process-step.step-01,
+  .process-step.step-02,
+  .process-step.step-03,
+  .process-step.step-04,
+  .process-step.step-05{
+    width: calc(100% - 104px) !important;
+    margin-left: 104px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .process-step b{
+    font-size: 28px !important;
+  }
+
+  .process-step h3{
+    font-size: 17px !important;
+  }
+
+  .process-step p{
+    font-size: 13.5px !important;
+  }
+}
+
+/* ======================================================
+   AJUSTES FINALES - BOTONES
+====================================================== */
+
+.btn,
+.btn-small,
+.btn-dark,
+.course-card a{
+    font-family: var(--font-body) !important;
+    font-weight:700 !important;
+    font-size:14px !important;
+    letter-spacing:.06em !important;
+
+    background:#FF5324 !important;
+    color:var(--bg) !important;
+
+    border:none !important;
+    border-radius:2px;
+
+    transition:.25s;
+}
+
+.btn:hover,
+.btn-small:hover,
+.btn-dark:hover,
+.course-card a:hover{
+    background:#ff6b43 !important;
+    color:var(--bg) !important;
+}
+
+/* ==========================================================
+   AJUSTES FINALES - HERO + STATS
+========================================================== */
+
+.hero{
+    min-height:100vh !important;
+    padding-bottom:0 !important;
+}
+
+.hero-vector{
+    position:absolute !important;
+    left:0 !important;
+    bottom:-1px !important;
+
+    width:100% !important;
+    height:auto !important;
+
+    z-index:1 !important;
+    pointer-events:none !important;
+}
+
+.stats{
+    margin-top:0 !important;
+    padding:35px 0 55px !important;
+}
+
+.stats-grid{
+    grid-template-columns:repeat(3,1fr) !important;
+    max-width:850px !important;
+    margin:0 auto !important;
+}
+
+/* ==========================================================
+   BENEFICIOS - TODOS LOS NUMEROS NARANJAS
+========================================================== */
+
+.benefit-card b{
+    background:#FF5324 !important;
+    color:#fff !important;
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:0;
+    font-family:'Inter',sans-serif;
+    font-weight:800;
+    font-size:18px;
+}
+
+/* ==========================================================
+   AJUSTES FINALES - CURSOS INTERACTIVOS
+========================================================== */
+
+.courses .tag{
+  background:var(--bg) !important;
+  color:#fff !important;
+}
+
+.featured-copy .btn,
+.featured-course .btn{
+  background:#315DFF !important;
+  color:#fff !important;
+  border-color:#315DFF !important;
+}
+
+.featured-copy .btn:hover,
+.featured-course .btn:hover{
+  background:#2448d8 !important;
+  color:#fff !important;
+}
+
+.course-showcase{
+  position:relative;
+  z-index:3;
+}
+
+.course-feature-panel{
+  display:none !important;
+  grid-template-columns:.92fr 1.08fr;
+  min-height:560px;
+  border-radius:0 0 28px 28px;
+  overflow:hidden;
+  box-shadow:0 34px 80px rgba(0,0,0,.35);
+}
+
+.course-feature-panel.active{
+  display:grid !important;
+}
+
+.course-options{
+  margin-top:-60px !important;
+  position:relative;
+  z-index:5;
+  max-width:980px;
+  margin-inline:auto;
+}
+
+.course-option{
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:0 22px 45px rgba(0,0,0,.32);
+  text-align:left;
+  cursor:pointer;
+  padding-bottom:24px !important;
+}
+
+.course-option img{
+  border-radius:18px 18px 0 0;
+}
+
+.course-option span{
+  display:inline-flex;
+  margin:22px 24px 0;
+  padding:12px 22px;
+  background:#FF5324;
+  color:var(--bg);
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  border-radius:4px;
+}
+
+.course-option.active{
+  opacity:.55;
+  transform:scale(.97);
+}
+
+@media(max-width:768px){
+  .course-feature-panel,
+  .course-feature-panel.active{
+    grid-template-columns:1fr;
+    min-height:auto;
+  }
+
+  .course-options{
+    margin-top:22px !important;
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ==========================================================
+   CURSOS - FULL WIDTH COMO REFERENCIA
+========================================================== */
+
+.courses{
+  padding-bottom:0 !important;
+  background:var(--bg) !important;
+}
+
+.course-showcase{
+  width:100vw !important;
+  margin-left:calc(50% - 50vw) !important;
+  background:#061d35 !important;
+  padding-bottom:70px !important;
+}
+
+.course-feature-panel{
+  width:100vw !important;
+  min-height:720px !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  grid-template-columns:46% 54% !important;
+}
+
+.course-feature-panel .featured-copy{
+  background:#FF5324 !important;
+  padding-left:clamp(40px,7vw,90px) !important;
+  padding-right:clamp(30px,5vw,70px) !important;
+}
+
+.course-feature-panel > img{
+  width:100% !important;
+  height:100% !important;
+  min-height:720px !important;
+  object-fit:cover !important;
+}
+
+.courses .tag{
+  background:var(--bg) !important;
+  color:#fff !important;
+}
+
+.featured-course .btn{
+  background:#315DFF !important;
+  color:#fff !important;
+}
+
+.course-options{
+  max-width:980px !important;
+  margin:-115px auto 0 !important;
+  padding:0 20px !important;
+  grid-template-columns:repeat(3,1fr) !important;
+}
+
+.course-option{
+  border-radius:14px !important;
+  overflow:hidden !important;
+  box-shadow:0 24px 55px rgba(0,0,0,.45) !important;
+  background:var(--bg-3) !important;
+  min-height:330px !important;
+}
+
+.course-option img{
+  height:155px !important;
+  border-radius:14px 14px 0 0 !important;
+}
+
+.course-option h3{
+  font-size:1.05rem !important;
+  line-height:1.15 !important;
+}
+
+.course-option p{
+  font-size:.88rem !important;
+  line-height:1.45 !important;
+}
+
+.course-option span{
+  background:#FF5324 !important;
+  color:var(--bg) !important;
+  border-radius:2px !important;
+}
+
+/* =====================================================
+   CURSOS - GRID DE 4 COLUMNAS
+===================================================== */
+
+.course-options{
+    display:grid !important;
+    grid-template-columns:repeat(4, minmax(0,1fr)) !important;
+    gap:24px !important;
+
+    width:100% !important;
+    max-width:1600px !important;
+
+    margin:-120px auto 0 !important;
+    padding:0 50px 60px !important;
+}
+
+.course-options .course-option{
+    width:100% !important;
+    max-width:none !important;
+}
+
+/* ==========================================================
+   DECORACIÓN BENEFICIOS - POSICIÓN FIJA PROPORCIONAL
+========================================================== */
+
+.benefits{
+  position:relative !important;
+  overflow:visible !important;
+}
+
+.benefits .side-left{
+  position:absolute !important;
+  left:0 !important;
+  top:-8vw !important;
+
+  width:18vw !important;
+  min-width:210px !important;
+  max-width:360px !important;
+
+  height:auto !important;
+  opacity:1 !important;
+  z-index:2 !important;
+  pointer-events:none !important;
+}
+
+.benefits .side-right{
+  position:absolute !important;
+  right:0 !important;
+  top:-7vw !important;
+
+  width:17vw !important;
+  min-width:200px !important;
+  max-width:340px !important;
+
+  height:auto !important;
+  opacity:1 !important;
+  z-index:2 !important;
+  pointer-events:none !important;
+}
+
+/* Evita que en mobile se reposicionen */
+@media (max-width:620px){
+  .benefits .side-left{
+    left:0 !important;
+    top:-8vw !important;
+    width:18vw !important;
+  }
+
+  .benefits .side-right{
+    right:0 !important;
+    top:-7vw !important;
+    width:17vw !important;
+  }
+}
+
+/* ==========================================================
+   DECORACIÓN CURSOS - CÍRCULOS CON GUITARRAS
+========================================================== */
+
+.stats .stats-circle{
+  display:none !important;
+}
+
+.courses{
+  position:relative !important;
+  overflow:visible !important;
+}
+
+.courses .courses-circle{
+  position:absolute !important;
+  height:auto !important;
+  opacity:1 !important;
+  z-index:2 !important;
+  pointer-events:none !important;
+  user-select:none !important;
+}
+
+/* círculo izquierdo */
+.courses .courses-circle-left{
+  left:0 !important;
+  top:-11vw !important;
+
+  width:20vw !important;
+  min-width:230px !important;
+  max-width:390px !important;
+}
+
+/* círculo derecho */
+.courses .courses-circle-right{
+  right:0 !important;
+  top:-13vw !important;
+
+  width:18vw !important;
+  min-width:220px !important;
+  max-width:370px !important;
+}
+
+/* mobile: mantiene la misma lógica proporcional, no se reubica */
+@media (max-width:620px){
+  .courses .courses-circle-left{
+    left:0 !important;
+    top:-11vw !important;
+    width:20vw !important;
+  }
+
+  .courses .courses-circle-right{
+    right:0 !important;
+    top:-13vw !important;
+    width:18vw !important;
+  }
+}
+
+/* ==========================================================
+   BENEFICIOS - CAPAS DE ONDAS DECORATIVAS
+========================================================== */
+
+.stats{
+  position:relative !important;
+  z-index:3 !important;
+}
+
+.benefits{
+  position:relative !important;
+  z-index:4 !important;
+  overflow:visible !important;
+}
+
+.benefits .side-left,
+.benefits .side-right{
+  z-index:5 !important;
+}
+
+.benefits .container{
+  position:relative !important;
+  z-index:8 !important;
+}
+
+/* ==========================================================
+   METODOLOGÍA - DESKTOP HORIZONTAL
+========================================================== */
+
+@media (min-width: 769px){
+
+  .process-map{
+    max-width:1500px !important;
+    min-height:720px !important;
+    position:relative !important;
+  }
+
+  .process-map{
+    position: relative;
+    overflow: hidden;
+}
+
+.process-guitar-horizontal{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: 88%;
+    max-width: 1200px;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+  .process-step{
+    width:300px !important;
+    opacity:.28 !important;
+    transition:.25s ease !important;
+  }
+
+  .process-step.active{
+    opacity:1 !important;
+    background:rgba(7,68,64,.9) !important;
+    border:1px solid var(--line) !important;
+    padding:28px 30px !important;
+  }
+
+  .step-01{left:2% !important; top:5% !important;}
+  .step-02{left:34% !important; top:6% !important;}
+  .step-03{left:50% !important; top:7% !important;}
+  .step-04{left:66% !important; top:6% !important;}
+  .step-05{left:82% !important; top:6% !important;}
+
+  .process-dot{
+    position: relative;
+    z-index: 5;
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    border:0;
+    background:#9d9d9d;
+    color:#fff;
+    font-weight:900;
+    font-size:28px;
+    cursor:pointer;
+  }
+
+  .process-dot.active{
+    background:#FF5324;
+  }
+
+  .dot-01{left:15%; top:56%;}
+  .dot-02{left:32%; top:56%;}
+  .dot-03{left:48%; top:56%;}
+  .dot-04{left:64%; top:56%;}
+  .dot-05{left:80%; top:56%;}
+}
+
+/* ==========================================================
+   METODOLOGÍA - DESKTOP COMO FIGMA HORIZONTAL
+========================================================== */
+
+@media (min-width:769px){
+
+  .process-map{
+    position:relative !important;
+    max-width:1500px !important;
+    min-height:760px !important;
+    margin:0 auto !important;
+  }
+
+  .process-guitar,
+  .process-guitar-horizontal{
+    position:absolute !important;
+    left:50% !important;
+    top:58% !important;
+    width:min(1220px,84vw) !important;
+    max-height:none !important;
+    transform:translate(-50%,-50%) !important;
+    z-index:2 !important;
+  }
+
+  .process-step{
+    position:relative !important;
+    top:70px !important;
+    width:180px !important;
+    min-height:auto !important;
+    padding:0 !important;
+    background:transparent !important;
+    border:0 !important;
+    opacity:.28 !important;
+    transform:none !important;
+    z-index:5 !important;
+  }
+
+  .process-step.active{
+    opacity:1 !important;
+    background:rgba(7,68,64,.75) !important;
+    border:1px solid rgba(245,234,216,.18) !important;
+    padding:26px 30px !important;
+    width:360px !important;
+  }
+
+  .process-step.step-01{
+    left:0 !important;
+    right:auto !important;
+    top:38px !important;
+  }
+
+  .process-step.step-02{
+    left:34% !important;
+    right:auto !important;
+  }
+
+  .process-step.step-03{
+    left:50% !important;
+    right:auto !important;
+  }
+
+  .process-step.step-04{
+    left:66% !important;
+    right:auto !important;
+  }
+
+  .process-step.step-05{
+    left:82% !important;
+    right:auto !important;
+  }
+
+  .process-dot{
+    position:absolute !important;
+    width:72px !important;
+    height:72px !important;
+    border-radius:50% !important;
+    border:0 !important;
+    background:#9d9d9d !important;
+    color:#fff !important;
+    font-size:26px !important;
+    font-weight:800 !important;
+    z-index:8 !important;
+  }
+
+  .process-dot.active{
+    background:#FF5324 !important;
+  }
+
+  .dot-01{left:15% !important; top:54% !important;}
+  .dot-02{left:32% !important; top:54% !important;}
+  .dot-03{left:48% !important; top:54% !important;}
+  .dot-04{left:64% !important; top:54% !important;}
+  .dot-05{left:80% !important; top:54% !important;}
+}
+/* ==========================================================
+   METODOLOGÍA - PASOS HORIZONTALES + ESTADO ACTIVO
+========================================================== */
+
+@media (min-width:769px){
+
+  .process-step{
+    position:absolute !important;
+    top:70px !important;
+    width:190px !important;
+    min-height:auto !important;
+    padding:0 !important;
+    background:transparent !important;
+    border:0 !important;
+    opacity:.28 !important;
+    transform:none !important;
+  }
+
+  .process-step.active{
+    opacity:1 !important;
+    background:rgba(7,68,64,.86) !important;
+    border:1px solid rgba(245,234,216,.18) !important;
+    padding:26px 30px !important;
+    width:360px !important;
+  }
+
+  .process-step.step-01{
+    left:3% !important;
+    top:70px !important;
+  }
+
+  .process-step.step-02{
+    left:34% !important;
+    top:70px !important;
+  }
+
+  .process-step.step-03{
+    left:50% !important;
+    top:70px !important;
+  }
+
+  .process-step.step-04{
+    left:66% !important;
+    top:70px !important;
+  }
+
+  .process-step.step-05{
+    left:82% !important;
+    top:70px !important;
+  }
+}
+
+/* ==========================================================
+   METODOLOGÍA - EVITAR TEXTOS ENCIMADOS
+========================================================== */
+
+@media (min-width:769px){
+
+  .process-step{
+    width:150px !important;
+    top:72px !important;
+  }
+
+  .process-step h3{
+    font-size:16px !important;
+    line-height:1.1 !important;
+    margin-bottom:6px !important;
+  }
+
+  .process-step p{
+    font-size:11px !important;
+    line-height:1.35 !important;
+  }
+
+  .process-step.active{
+    width:330px !important;
+    padding:24px 26px !important;
+  }
+
+  .process-step.active h3{
+    font-size:24px !important;
+    line-height:1.1 !important;
+  }
+
+  .process-step.active p{
+    font-size:16px !important;
+    line-height:1.45 !important;
+  }
+
+  .process-step.step-01{ left:4% !important; }
+  .process-step.step-02{ left:34% !important; }
+  .process-step.step-03{ left:49% !important; }
+  .process-step.step-04{ left:64% !important; }
+  .process-step.step-05{ left:79% !important; }
+}
+
+/* ==========================================================
+   BOTONES DE LA GUITARRA RESPONSIVE
+========================================================== */
+
+.process-dot{
+    width: clamp(48px, 4vw, 72px) !important;
+    height: clamp(48px, 4vw, 72px) !important;
+    border-radius: 50%;
+    font-size: clamp(1.2rem, 1.8vw, 2rem) !important;
+    font-weight: 800;
+    border: 3px solid #F5EAD8;
+    transition: .35s;
+}
+
+.process-dot.active{
+    background:#FF5324;
+    color:#fff;
+    transform:scale(1.08);
+}
+
+.process-dot:not(.active){
+    background:#B8B8B8;
+    color:#fff;
+}
+
+.process-dot:hover{
+    transform:scale(1.05);
+}
+
+@media (min-width:769px){
+
+.process-step{
+    position:absolute;
+    top:70px;
+    width:170px;
+    opacity:.28;
+    background:transparent;
+    border:none;
+    padding:0;
+    transition:.35s;
+}
+
+/* Ocultar descripción de los inactivos */
+.process-step p{
+    display:none;
+}
+
+/* Sólo el activo tiene la caja */
+.process-step.active{
+    width:320px;
+    padding:26px;
+    opacity:1;
+    background:rgba(8,74,68,.88);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.process-step.active p{
+    display:block;
+}
+
+/* Títulos pequeños */
+.process-step h3{
+    font-size:15px;
+    line-height:1.15;
+}
+
+/* Título grande del activo */
+.process-step.active h3{
+    font-size:26px;
+}
+
+.process-step.active p{
+    font-size:16px;
+    line-height:1.45;
+}
+
+/* Posiciones */
+.step-01{left:3%;}
+.step-02{left:39%;}
+.step-03{left:56%;}
+.step-04{left:72%;}
+.step-05{left:87%;}
+}
+
+/* ==========================================================
+   CURSOS - VER CÍRCULOS COMPLETOS SIN MOVERLOS
+========================================================== */
+
+.stats{
+  overflow:visible !important;
+  z-index:1 !important;
+}
+
+.courses{
+  overflow:visible !important;
+  z-index:10 !important;
+}
+
+.courses .courses-circle{
+  z-index:50 !important;
+  overflow:visible !important;
+}
+
+/* ==========================================================
+   TESTIMONIOS - CARRUSEL
+========================================================== */
+
+.testimonial-carousel{
+  position:relative !important;
+  min-height:360px !important;
+}
+
+.testimonial-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:translateX(28px);
+  transition:opacity .7s ease, transform .7s ease;
+  pointer-events:none;
+}
+
+.testimonial-slide.active{
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+
+.testimonial-slide p{
+  font-family:var(--font-display);
+  font-size:clamp(34px,3.6vw,58px);
+  line-height:1.06;
+  margin:0 0 28px;
+  color:var(--cream) !important;
+}
+
+.testimonial-slide small{
+  color:var(--cream-2) !important;
+  font-weight:700;
+}
+
+/* ==========================================================
+   TESTIMONIOS - AJUSTES VISUALES
+========================================================== */
+
+.testimonial-image h2{
+  font-size:clamp(58px, 6vw, 96px) !important;
+  line-height:.95 !important;
+}
+
+.testimonial-image img{
+  width:360px !important;
+  height:auto !important;
+  max-height:none !important;
+  object-fit:contain !important;
+}
+
+.testimonial-carousel{
+  min-height:430px !important;
+  padding-bottom:48px !important;
+}
+
+.testimonial-dots{
+  position:absolute;
+  left:0;
+  bottom:0;
+  display:flex;
+  gap:12px;
+  z-index:5;
+}
+
+.testimonial-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  border:0;
+  background:var(--cream);
+  opacity:.85;
+  cursor:pointer;
+  padding:0;
+}
+
+.testimonial-dot.active{
+  background:#FF5324;
+  opacity:1;
+}
+
+@media(max-width:768px){
+  .testimonial-image h2{
+    font-size:52px !important;
+  }
+
+  .testimonial-image img{
+    width:280px !important;
+  }
+}
+
+/* ==========================================================
+   HERO - CORRECCIÓN MOBILE SIN SUPERPOSICIÓN
+========================================================== */
+
+@media(max-width:768px){
+
+  .hero{
+    overflow:hidden !important;
+    padding-bottom:0 !important;
+  }
+
+  .hero-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    min-height:100svh !important;
+  }
+
+  .hero-copy{
+    position:relative !important;
+    z-index:5 !important;
+  }
+
+  .hero-art{
+    position:relative !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:115vw !important;
+    max-width:none !important;
+    margin-left:-12vw !important;
+    margin-top:20px !important;
+    margin-bottom:-22vw !important;
+    transform: translateY(60px);
+    z-index:4 !important;
+  }
+
+  .hero-art img{
+    width:100% !important;
+    height:auto !important;
+  }
+
+  .hero-vector{
+    position:relative !important;
+    bottom:auto !important;
+    left:auto !important;
+    width:100% !important;
+    margin-top:-10vw !important;
+    z-index:3 !important;
+  }
+}
+
+/* Ocultar círculo izquierdo en mobile */
+
+@media (max-width: 768px){
+
+    .courses-circle-left{
+        display: none !important;
+    }
+
+}
+
+/* ==========================================================
+   CURSOS - CARDS HORIZONTALES EN MOBILE
+========================================================== */
+
+@media (max-width: 768px){
+
+  .course-options{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:18px !important;
+    padding:0 18px 50px !important;
+    margin-top:24px !important;
+  }
+
+  .course-option{
+    display:grid !important;
+    grid-template-columns:110px 1fr !important;
+    grid-template-rows:auto auto !important;
+    gap:12px 16px !important;
+
+    min-height:auto !important;
+    padding:14px !important;
+    border-radius:18px !important;
+  }
+
+  .course-option img{
+    grid-row:1 / 3 !important;
+    grid-column:1 !important;
+
+    width:110px !important;
+    height:110px !important;
+    object-fit:cover !important;
+    border-radius:14px !important;
+  }
+
+  .course-option h3{
+    grid-column:2 !important;
+    margin:0 !important;
+
+    font-size:1.15rem !important;
+    line-height:1.15 !important;
+  }
+
+  .course-option p{
+    display:none !important;
+  }
+
+  .course-option span{
+    grid-column:2 !important;
+    width:max-content !important;
+
+    margin:0 !important;
+    padding:10px 18px !important;
+
+    font-size:.78rem !important;
+  }
+}
+
+/* ==========================================================
+   METODOLOGÍA - MOBILE DOS COLUMNAS CORREGIDO
+========================================================== */
+
+.process-guitar-mobile{
+  display:none;
+}
+
+@media (max-width:768px){
+
+  .process-guitar-horizontal,
+  .process-guitar{
+    display:none !important;
+  }
+
+  .process-map{
+    display:grid !important;
+    grid-template-columns:38vw 1fr !important;
+    column-gap:18px !important;
+    align-items:stretch !important;
+    padding:0 18px 50px !important;
+  }
+
+  .process-guitar-mobile{
+    display:block !important;
+    grid-column:1 !important;
+    grid-row:1 / 6 !important;
+
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+
+    position:sticky !important;
+    top:90px !important;
+    align-self:start !important;
+  }
+
+  .process-step{
+    grid-column:2 !important;
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+
+    padding:0 0 28px !important;
+    margin:0 !important;
+
+    opacity:.38 !important;
+    transform:none !important;
+    background:transparent !important;
+    border:none !important;
+  }
+
+  .process-step.active{
+    opacity:1 !important;
+  }
+
+  .process-step:not(.active) p{
+    display:none !important;
+  }
+
+  .process-step b{
+    color:#FF5324 !important;
+    font-size:32px !important;
+  }
+
+  .process-step h3{
+    font-size:20px !important;
+    line-height:1.1 !important;
+    color:#fff !important;
+  }
+
+  .process-step p{
+    font-size:15px !important;
+    line-height:1.4 !important;
+    color:#fff !important;
+  }
+
+  .process-dot{
+    display:none !important;
+  }
+}
+
+/* ==========================================================
+   METODOLOGÍA - MOBILE REAL INTERACTIVO
+========================================================== */
+
+@media (max-width:768px){
+
+  .process{
+    padding:90px 0 70px !important;
+  }
+
+  .process .center-title{
+    font-size:clamp(42px, 13vw, 64px) !important;
+    line-height:.95 !important;
+    text-align:left !important;
+    padding:0 20px !important;
+    margin-bottom:34px !important;
+  }
+
+  .process-map{
+    display:grid !important;
+    grid-template-columns:42% 58% !important;
+    gap:16px !important;
+    padding:0 16px !important;
+    min-height:auto !important;
+    align-items:start !important;
+  }
+
+  .process-guitar,
+  .process-guitar-horizontal{
+    display:none !important;
+  }
+
+  .process-guitar-mobile{
+    display:block !important;
+    grid-column:1 !important;
+    grid-row:1 / span 5 !important;
+    width:100% !important;
+    max-width:190px !important;
+    position:sticky !important;
+    top:120px !important;
+    align-self:start !important;
+    z-index:2 !important;
+  }
+
+  .process-step{
+    grid-column:2 !important;
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    padding:18px 0 !important;
+    margin:0 !important;
+    border-bottom:1px solid rgba(255,255,255,.12) !important;
+    background:transparent !important;
+    opacity:.38 !important;
+    transform:none !important;
+  }
+
+  .process-step.active{
+    opacity:1 !important;
+  }
+
+  .process-step b{
+    font-size:34px !important;
+    color:#FF5324 !important;
+    line-height:1 !important;
+    margin-bottom:6px !important;
+  }
+
+  .process-step h3{
+    font-size:20px !important;
+    line-height:1.05 !important;
+    color:#fff !important;
+    margin-bottom:8px !important;
+  }
+
+  .process-step p{
+    font-family:var(--font-body) !important;
+    font-size:15px !important;
+    line-height:1.45 !important;
+    color:#fff !important;
+  }
+
+  .process-step:not(.active) p{
+    display:none !important;
+  }
+
+  .process-step:not(.active) h3{
+    font-size:16px !important;
+  }
+
+  .process-dot{
+    display:flex !important;
+    position:relative !important;
+    inset:auto !important;
+    width:42px !important;
+    height:42px !important;
+    font-size:16px !important;
+    border:2px solid var(--cream) !important;
+    background:#aaa !important;
+    color:#fff !important;
+    z-index:5 !important;
+  }
+
+  .process-dot.active{
+    background:#FF5324 !important;
+  }
+}
+
+/* ==========================================================
+   EMERGENCIA - VOLVER A MOSTRAR TODA LA LANDING
+========================================================== */
+
+section,
+.hero,
+.stats,
+.benefits,
+.courses,
+.process,
+.testimonials,
+.final-cta,
+.site-footer{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+
+.container,
+.hero-grid,
+.stats-grid,
+.benefit-grid,
+.course-showcase,
+.course-grid,
+.process-map,
+.testimonial-grid,
+.cta-box{
+  visibility:visible !important;
+  opacity:1 !important;
+}
+
+/* Si el JS se rompió, esto evita que las secciones queden ocultas */
+.reveal,
+.reveal.visible,
+.delay-1,
+.delay-2,
+.delay-3,
+.delay-step-1,
+.delay-step-2,
+.delay-step-3,
+.delay-step-4,
+.delay-step-5{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+}
+
+/* Evita que una sección tape o corte a las demás */
+.hero,
+.stats,
+.benefits,
+.courses,
+.process,
+.testimonials,
+.final-cta{
+  position:relative !important;
+  overflow:visible !important;
+  min-height:auto !important;
+}
+
+/* Recupera espaciado general */
+.hero{ padding-top:120px !important; }
+.stats{ padding:60px 0 !important; }
+.benefits,
+.courses,
+.process,
+.testimonials,
+.final-cta{
+  padding-top:100px !important;
+  padding-bottom:100px !important;
+}
+
+/* ==========================================================
+   REPARACIÓN FINAL — METODOLOGÍA LIMPIA Y FUNCIONAL
+   Este bloque va último y pisa todas las versiones anteriores.
+========================================================== */
+
+/* Base segura */
+#metodo.process{
+  position:relative !important;
+  padding:118px 0 145px !important;
+  overflow:hidden !important;
+}
+
+#metodo .process-map{
+  position:relative !important;
+  max-width:1500px !important;
+  min-height:720px !important;
+  margin:0 auto !important;
+  overflow:visible !important;
+}
+
+#metodo .process-guitar-mobile{
+  display:none !important;
+}
+
+/* ---------- DESKTOP ---------- */
+@media (min-width:769px){
+
+  #metodo .process-map{
+    display:grid !important;
+    grid-template-columns:repeat(5, minmax(0,1fr)) !important;
+    grid-template-rows:auto 1fr !important;
+    column-gap:24px !important;
+    align-items:start !important;
+    padding-top:40px !important;
+  }
+
+  #metodo .process-guitar,
+  #metodo .process-guitar-horizontal{
+    display:block !important;
+    position:absolute !important;
+    left:50% !important;
+    top:58% !important;
+    width:min(1220px,84vw) !important;
+    max-width:none !important;
+    max-height:none !important;
+    height:auto !important;
+    margin:0 !important;
+    transform:translate(-50%,-50%) !important;
+    z-index:1 !important;
+    pointer-events:none !important;
+    filter:drop-shadow(0 0 35px rgba(240,90,40,.55)) !important;
+  }
+
+  #metodo .process-step,
+  #metodo .process-step.step-01,
+  #metodo .process-step.step-02,
+  #metodo .process-step.step-03,
+  #metodo .process-step.step-04,
+  #metodo .process-step.step-05{
+    position:relative !important;
+    inset:auto !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+    grid-row:1 !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:transparent !important;
+    border:0 !important;
+    opacity:.34 !important;
+    transform:none !important;
+    z-index:4 !important;
+    transition:opacity .28s ease, transform .28s ease, background .28s ease !important;
+  }
+
+  #metodo .step-01{grid-column:1 !important;}
+  #metodo .step-02{grid-column:2 !important;}
+  #metodo .step-03{grid-column:3 !important;}
+  #metodo .step-04{grid-column:4 !important;}
+  #metodo .step-05{grid-column:5 !important;}
+
+  #metodo .process-step.active{
+    opacity:1 !important;
+    background:rgba(7,68,64,.88) !important;
+    border:1px solid var(--line) !important;
+    padding:24px 24px !important;
+    transform:scale(1) !important;
+    z-index:6 !important;
+  }
+
+  #metodo .process-step:not(.active) p{
+    display:none !important;
+  }
+
+  #metodo .process-step b{
+    display:block !important;
+    color:#FF5324 !important;
+    font-family:var(--font-body) !important;
+    font-size:32px !important;
+    font-weight:800 !important;
+    line-height:1 !important;
+    margin:0 0 10px !important;
+  }
+
+  #metodo .process-step h3{
+    color:#fff !important;
+    font-family:var(--font-body) !important;
+    font-size:15px !important;
+    font-weight:800 !important;
+    line-height:1.12 !important;
+    text-transform:uppercase !important;
+    letter-spacing:.02em !important;
+    margin:0 !important;
+  }
+
+  #metodo .process-step.active h3{
+    font-size:22px !important;
+    margin-bottom:10px !important;
+  }
+
+  #metodo .process-step p{
+    color:#fff !important;
+    font-family:var(--font-body) !important;
+    font-size:15px !important;
+    line-height:1.45 !important;
+    margin:0 !important;
+  }
+
+  #metodo .process-dot,
+  #metodo .process-dot.dot-01,
+  #metodo .process-dot.dot-02,
+  #metodo .process-dot.dot-03,
+  #metodo .process-dot.dot-04,
+  #metodo .process-dot.dot-05{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    position:absolute !important;
+    width:clamp(46px,3.8vw,58px) !important;
+    height:clamp(46px,3.8vw,58px) !important;
+    border-radius:50% !important;
+    border:3px solid #f5ead8 !important;
+    background:#a9a9a9 !important;
+    color:#fff !important;
+    font-family:var(--font-body) !important;
+    font-size:clamp(16px,1.4vw,21px) !important;
+    font-weight:800 !important;
+    cursor:pointer !important;
+    z-index:8 !important;
+    transition:background .25s ease, transform .25s ease !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+
+  #metodo .process-dot.active{
+    background:#FF5324 !important;
+    color:#fff !important;
+    transform:scale(1.08) !important;
+  }
+
+  #metodo .dot-01{left:14% !important; top:55% !important;}
+  #metodo .dot-02{left:31% !important; top:55% !important;}
+  #metodo .dot-03{left:48% !important; top:55% !important;}
+  #metodo .dot-04{left:65% !important; top:55% !important;}
+  #metodo .dot-05{left:82% !important; top:55% !important;}
+}
+
+/* ---------- MOBILE SEGURO ---------- */
+@media (max-width:768px){
+  #metodo.process{
+    padding:76px 0 80px !important;
+    overflow:hidden !important;
+  }
+
+  #metodo .center-title{
+    text-align:center !important;
+    font-size:clamp(38px,11vw,54px) !important;
+    line-height:1 !important;
+    margin-bottom:40px !important;
+  }
+
+  #metodo .process-map{
+    display:grid !important;
+    grid-template-columns:112px 1fr !important;
+    gap:0 18px !important;
+    min-height:auto !important;
+    padding:0 12px !important;
+  }
+
+  #metodo .process-guitar-horizontal,
+  #metodo .process-guitar:not(.process-guitar-mobile){
+    display:none !important;
+  }
+
+  #metodo .process-guitar-mobile{
+    display:block !important;
+    grid-column:1 !important;
+    grid-row:1 / span 5 !important;
+    position:sticky !important;
+    top:90px !important;
+    width:112px !important;
+    height:auto !important;
+    align-self:start !important;
+    z-index:2 !important;
+    filter:drop-shadow(0 0 24px rgba(240,90,40,.45)) !important;
+  }
+
+  #metodo .process-step,
+  #metodo .process-step.step-01,
+  #metodo .process-step.step-02,
+  #metodo .process-step.step-03,
+  #metodo .process-step.step-04,
+  #metodo .process-step.step-05{
+    grid-column:2 !important;
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 0 26px !important;
+    background:transparent !important;
+    border:0 !important;
+    opacity:.42 !important;
+    transform:none !important;
+  }
+
+  #metodo .process-step.active{
+    opacity:1 !important;
+  }
+
+  #metodo .process-step:not(.active) p{
+    display:none !important;
+  }
+
+  #metodo .process-step b{
+    color:#FF5324 !important;
+    font-size:28px !important;
+    font-family:var(--font-body) !important;
+    font-weight:800 !important;
+    line-height:1 !important;
+    margin:0 0 8px !important;
+  }
+
+  #metodo .process-step h3{
+    color:#fff !important;
+    font-family:var(--font-body) !important;
+    font-size:17px !important;
+    line-height:1.1 !important;
+    margin:0 0 8px !important;
+  }
+
+  #metodo .process-step.active h3{
+    font-size:20px !important;
+  }
+
+  #metodo .process-step p{
+    color:#fff !important;
+    font-family:var(--font-body) !important;
+    font-size:14px !important;
+    line-height:1.45 !important;
+    margin:0 !important;
+  }
+
+  #metodo .process-dot{
+    display:none !important;
+  }
+}
+/* ==========================================================
+   LOGO TRASTES EN BLANCO
+========================================================== */
+
+.brand{
+    color:#ffffff !important;
+}
+
+.brand-mark{
+    color:#ffffff !important;
+}
+
+.brand svg,
+.brand svg *{
+    fill:#ffffff !important;
+}
+
+.courses{
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+}
+
+.courses::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:url("../assets/textures/plano-guitarra.png");
+    background-size:900px auto;
+    background-position:center;
+    opacity:.045;
+    pointer-events:none;
+    z-index:0;
+}
+
+.courses > *{
+    position:relative;
+    z-index:1;
+}
+
+/* Reducir altura del curso destacado */
+.featured-course{
+    min-height: 340px !important;
+}
+
+.featured-copy{
+    padding: 36px 44px !important;
+}
+
+.featured-course img{
+    height: 340px !important;
+    object-fit: cover;
+}
