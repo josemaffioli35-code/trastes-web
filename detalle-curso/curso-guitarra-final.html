@@ -1387,9 +1387,10 @@ max-width: 900px;
 
 .course-hero .hero-detail-grid{
   display:grid !important;
-  grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr) !important;
+  width:min(1240px,calc(100% - 32px)) !important;
+  grid-template-columns:minmax(0,1.083fr) minmax(0,1fr) !important;
   align-items:center !important;
-  gap:clamp(28px,5vw,72px) !important;
+  gap:48px !important;
   padding-bottom:30px !important;
 }
 
@@ -1416,11 +1417,33 @@ max-width: 900px;
 }
 
 .hero-image-wrapper img.hero-png-img{
-  width:min(560px,42vw) !important;
+  width:150% !important;
+  max-width:none !important;
+  height:88% !important;
   max-height:none !important;
-  height:auto !important;
   object-fit:contain !important;
+  object-position:center !important;
   filter:drop-shadow(0 0 35px rgba(234,65,14,.35)) !important;
+}
+
+.hero-desktop-image{
+  width:100%;
+  height:clamp(580px,72vh,780px);
+  align-self:center !important;
+  left:-150px;
+  top:0;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+@media (min-width:769px) and (max-width:1100px){
+  .course-hero .hero-detail-grid{
+    grid-template-columns:minmax(430px,.95fr) minmax(0,1.05fr) !important;
+  }
+  .hero-desktop-image{
+    height:clamp(500px,66vh,620px);
+    left:-60px;
+  }
 }
 
 .hero-mobile-image{
@@ -1609,6 +1632,7 @@ max-width: 900px;
 @media(max-width:768px){
   .course-hero .hero-detail-grid{
     display:flex !important;
+    width:min(var(--max),calc(100% - 32px)) !important;
     flex-direction:column !important;
     align-items:flex-start !important;
     gap:18px !important;
@@ -1626,9 +1650,9 @@ max-width: 900px;
   }
 
   .hero-mobile-image img.hero-png-img{
-    width:96% !important;
-    max-width:430px !important;
-    margin:0 auto;
+    width:112% !important;
+    max-width:600px !important;
+    margin:0 0 0 -6%;
   }
 
   .hero-copy{
@@ -1741,7 +1765,297 @@ max-width: 900px;
   position: relative !important;
   z-index: 3 !important;
 }
-  </style>
+/* =========================================================
+   COMPONENTES INTERACTIVOS — DETALLE DEL CURSO
+========================================================= */
+.premium-showcase { padding: 84px 0 96px; }
+.premium-showcase .premium-showcase-title {
+  max-width: none;
+  margin-bottom: 46px;
+  white-space: nowrap;
+  font-size: clamp(40px, 6.2vw, 76px);
+}
+.stacked-cards { display: grid; gap: 12px; }
+.stacked-card {
+  background: var(--bg);
+  color: var(--cream);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(6,55,53,.12);
+  transition: transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s ease;
+}
+.stacked-card.is-active {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(6,55,53,.18);
+}
+.stacked-card-trigger {
+  width: 100%;
+  min-height: 68px;
+  padding: 0 28px;
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  font: 800 16px/1.2 var(--body);
+  cursor: pointer;
+}
+.stacked-card-trigger:focus-visible,
+.hotspot:focus-visible,
+.hotspot-close:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+.stacked-card-number {
+  color: var(--yellow);
+  font: 32px/1 var(--display);
+  letter-spacing: .04em;
+}
+.stacked-card-content {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(18px);
+  overflow: hidden;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: minmax(280px,.9fr) 1.1fr;
+  gap: clamp(28px,5vw,64px);
+  align-items: center;
+  transition: max-height .7s cubic-bezier(.22,1,.36,1), opacity .45s ease, transform .65s cubic-bezier(.22,1,.36,1), padding .65s ease;
+}
+.stacked-card.is-active .stacked-card-content {
+  max-height: 560px;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 8px 28px 30px;
+}
+.stacked-card-content img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.stacked-card:nth-child(4) .stacked-card-content img {
+  width: 92%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+}
+.stacked-card-copy h3 {
+  margin-bottom: 12px;
+  color: var(--cream);
+  font: 800 clamp(24px,3vw,38px)/1.05 var(--body);
+}
+.stacked-card-copy p { max-width: 540px; color: var(--cream-2); font: 400 15px/1.75 var(--body); }
+
+.curriculum .module-list {
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px !important;
+  align-items:stretch;
+  max-width:1080px;
+  margin-inline:auto;
+}
+.curriculum .module-item {
+  position:relative;
+  min-height:0;
+  height:auto;
+  padding:32px 38px !important;
+  display:grid !important;
+  grid-template-columns:64px minmax(0,1fr) !important;
+  gap:24px !important;
+  align-items:start !important;
+  background:var(--bg-3);
+  border:1px solid var(--line) !important;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 16px 38px rgba(0,0,0,.14);
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .3s ease;
+}
+.curriculum .module-item::after {
+  display:none;
+}
+.curriculum .module-item:hover {
+  transform:none;
+  border-color:var(--line) !important;
+  box-shadow:0 16px 38px rgba(0,0,0,.14);
+}
+.curriculum .module-number {
+  width:58px !important;
+  height:58px !important;
+  border-radius:4px;
+  background:var(--orange) !important;
+}
+.curriculum .module-title-text h3 {
+  font-family:var(--display) !important;
+  font-size:clamp(30px,3vw,42px) !important;
+}
+.curriculum .module-title-text p {
+  font-family:var(--body) !important;
+  margin-top:12px;
+}
+.curriculum .section-title { white-space:nowrap; }
+.curriculum { overflow:visible !important; }
+.curriculum .container { position:relative; z-index:2; }
+.learning-decor-left,
+.learning-decor-right {
+  position:absolute !important;
+  height:auto;
+  z-index:1;
+  opacity:1;
+  pointer-events:none;
+}
+.learning-decor-left {
+  left:0 !important;
+  top:-8vw !important;
+  width:18vw !important;
+  min-width:210px;
+  max-width:360px;
+}
+.learning-decor-right {
+  right:0 !important;
+  top:-7vw !important;
+  width:17vw !important;
+  min-width:200px;
+  max-width:340px;
+}
+@media (max-width:1023px) {
+  .learning-decor-left,
+  .learning-decor-right { display:none !important; }
+}
+
+.for-who .for-who-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.for-who .for-who-card { height: 100%; padding: 26px 24px; }
+.for-who .instructor-block {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 310px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(300px,.8fr) 1.2fr;
+  gap: 0;
+  align-items: stretch;
+  border-radius: 0;
+}
+.for-who .instructor-img-wrap { width: 100%; height: 100%; min-height: 310px; border: 0; }
+.for-who .instructor-img-wrap img { object-position: center 28%; }
+.for-who .instructor-info { padding: 40px clamp(28px,4vw,54px); align-self: center; position: relative; z-index: 1; }
+.for-who .instructor-info h3 { font-size: clamp(40px,4vw,44px); }
+.for-who .instructor-stats { gap: clamp(22px,3vw,42px); margin-top: 24px; }
+.for-who .istat strong { font-size: 38px; }
+.for-who .istat span { margin-top: 5px; display: block; color: rgba(5,47,46,.9); font-size: 11px; font-weight: 800; line-height: 1.35; }
+
+.interactive-workshop { padding: 92px 0 104px; }
+.interactive-workshop .materials-heading { max-width: 760px; margin: 0 0 34px; text-align: left; }
+.interactive-workshop .eyebrow { justify-content: flex-start; }
+.interactive-workshop .section-title { margin-top: 14px !important; }
+.interactive-workshop .lead-text { max-width: 650px; margin: 0; }
+.workshop-stage { position: relative; width: min(940px,100%); margin: 0 auto; }
+.workshop-visual { position:relative; width:100%; }
+.workshop-visual > img { width: 100%; max-height: 680px; object-fit: contain; filter: drop-shadow(0 22px 36px rgba(0,0,0,.24)); }
+.hotspot {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--yellow);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  box-shadow: 0 6px 18px rgba(0,0,0,.22), 0 0 16px rgba(240,181,30,.3);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.hotspot::before { content: ""; position: absolute; inset: 0; background: var(--yellow); border-radius: 50%; animation: hotspotPulse 2.3s ease-out infinite; z-index: -1; }
+.hotspot span { display: none; }
+.hotspot[aria-expanded="true"] { transform: scale(1.08); box-shadow: 0 8px 22px rgba(0,0,0,.25), 0 0 22px rgba(240,181,30,.55); }
+.hotspot-saw { left: 16%; top: 56%; }
+.hotspot-plane { left: 35%; top: 36%; }
+.hotspot-chisel { left: 52%; top: 58%; }
+.hotspot-gouge { left: 66%; top: 32%; }
+.hotspot-ruler { left: 78%; top: 60%; }
+.hotspot-clamp { left: 48%; top: 23%; }
+@keyframes hotspotPulse { 0% { opacity:.38; transform:scale(1); } 70%,100% { opacity:0; transform:scale(1.55); } }
+.hotspot-panel {
+  position: absolute;
+  z-index: 5;
+  right: 4%;
+  top: 8%;
+  width: min(330px,42%);
+  padding: 26px;
+  background: var(--cream);
+  color: var(--bg);
+  border: 1px solid var(--bg);
+  border-radius: 16px;
+  box-shadow: 0 22px 50px rgba(0,0,0,.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(.98);
+  transition: opacity .3s ease, transform .4s cubic-bezier(.22,1,.36,1), visibility .3s;
+}
+.hotspot-panel.is-open { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.hotspot-panel h3 { margin: 5px 28px 10px 0; font: 800 25px/1.1 var(--body); }
+.hotspot-kicker { color: var(--orange); font: 800 10px/1 var(--body); text-transform: uppercase; letter-spacing: .16em; }
+.hotspot-description,.hotspot-use { font: 400 13px/1.6 var(--body); color: #38514f; }
+.hotspot-use { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(6,55,53,.16); }
+.hotspot-use::before { content: "En el curso: "; color: var(--bg); font-weight: 800; }
+.hotspot-close { position: absolute; right: 16px; top: 14px; width: 32px; height: 32px; border: 0; background: transparent; color: var(--bg); font: 28px/1 var(--body); cursor: pointer; }
+
+.final-cta .final-cta-layout { position: relative; z-index: 2; grid-template-columns: minmax(0,1.05fr) minmax(340px,.95fr); }
+.final-cta-instrument { display: flex; align-items: center; justify-content: flex-start; transform: translateX(-4%); }
+.final-cta-instrument img { width: min(610px,48vw); filter: drop-shadow(0 14px 18px rgba(5,47,46,.18)); }
+
+@media (max-width: 900px) {
+  .premium-showcase .premium-showcase-title { white-space: normal; }
+  .for-who .for-who-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .for-who .for-who-card:last-child { grid-column: 1 / -1; }
+  .for-who .instructor-block { grid-template-columns: minmax(250px,.85fr) 1.15fr; }
+  .final-cta .final-cta-layout { grid-template-columns: 1fr; }
+  .final-cta-instrument { justify-content: center; transform: none; margin-top: 30px; }
+  .final-cta-instrument img { width: min(620px,90vw); }
+}
+@media (max-width: 640px) {
+  .premium-showcase { padding: 72px 0 80px; }
+  .premium-showcase .premium-showcase-title { font-size: clamp(38px,12vw,58px); line-height:.96; }
+  .premium-showcase .premium-showcase-title span { display: block; }
+  .stacked-card-trigger { min-height: 58px; padding: 0 18px; font-size: 14px; }
+  .stacked-card-number { font-size: 26px; }
+  .stacked-card-content { display: block; padding-inline: 18px; }
+  .stacked-card.is-active .stacked-card-content { max-height: 620px; padding: 4px 18px 22px; }
+  .stacked-card-content img { height: 240px; margin-bottom: 20px; }
+  .stacked-card:nth-child(4) .stacked-card-content img { margin: 0 auto 20px; }
+  .stacked-card-copy h3 { font-size: 23px; }
+  .curriculum .module-list { grid-template-columns:1fr; gap:18px !important; }
+  .curriculum .module-item {
+    min-height:auto;
+    padding:28px 22px !important;
+    grid-template-columns:52px minmax(0,1fr) !important;
+    gap:16px !important;
+  }
+  .for-who .for-who-grid { grid-template-columns: 1fr; }
+  .for-who .for-who-card:last-child { grid-column: auto; }
+  .for-who .instructor-block { display: flex; flex-direction: column; }
+  .for-who .instructor-img-wrap { min-height: 230px; aspect-ratio: 16/9; }
+  .for-who .instructor-info { padding: 30px 22px; }
+  .for-who .instructor-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .for-who .istat strong { font-size: 30px; }
+  .for-who .istat span { font-size: 9px; }
+  .interactive-workshop { padding: 76px 0 84px; }
+  .workshop-stage { padding-bottom:0; }
+  .hotspot { width: 30px; height: 30px; }
+  .hotspot-panel { position:relative; top:auto; right:auto; bottom:auto; width:100%; min-height:205px; margin-top:20px; }
+  .final-cta-instrument img { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stacked-card,.stacked-card-content,.hotspot-panel { transition-duration: .01ms; }
+  .hotspot::before { animation: none; }
+}
+</style>
 </head>
 <body>
 
@@ -1752,7 +2066,7 @@ max-width: 900px;
     <a class="brand" href="index.html" aria-label="Trastes inicio">
       <span class="brand-mark">T</span><span>TRASTES</span>
     </a>
-    <a class="nav-back" href="index.html">
+    <a class="nav-back" href="../index.html">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M10 12L6 8l4-4"/>
       </svg>
@@ -1782,13 +2096,13 @@ max-width: 900px;
             <h1>
               <span>Construye&nbsp;tu</span>
               <em>guitarra</em>
-              <span>desde&nbsp;cero.</span>
+              <span>desde&nbsp;cero</span>
             </h1>
           </div>
 
           <div class="hero-mobile-image reveal delay-1">
             <img class="guitar-hero-img hero-png-img"
-                 src="../assets/hero/luthier-guitarra-detalle.png"
+                 src="../assets/hero/foto-hero-detalle.png"
                  alt="Luthier trabajando sobre una guitarra">
           </div>
 
@@ -1835,7 +2149,7 @@ max-width: 900px;
 
         <div class="hero-image-wrapper hero-desktop-image reveal delay-1">
           <img class="guitar-hero-img hero-png-img"
-               src="../assets/hero/luthier-guitarra-detalle.png"
+               src="../assets/hero/foto-hero-detalle.png"
                alt="Luthier trabajando sobre una guitarra">
         </div>
       </div>
@@ -1858,57 +2172,65 @@ max-width: 900px;
     <!-- ============================================================
          SECCIÓN 2 — LO QUE VAS A CONSTRUIR
     ============================================================ -->
-    <section class="showcase">
-      <img class="decor-abs decor-side-right" src="forma-vertical-der.png" alt="" aria-hidden="true">
+    <section class="showcase premium-showcase">
       <div class="container">
-        <div class="showcase-layout">
-          <!-- Copy -->
-          <div>
-            <p class="eyebrow showcase-eyebrow reveal">
-              <span class="eyebrow-line"></span>
-              Al terminar el curso
-            </p>
-            <h2 class="section-title reveal delay-1">
-              Una guitarra<br><span class="accent">personalisada</span>
-            </h2>
+        <p class="eyebrow showcase-eyebrow reveal">
+          <span class="eyebrow-line"></span>
+          Al terminar el curso
+        </p>
+        <h2 class="section-title premium-showcase-title reveal delay-1">
+          <span>Una guitarra</span> <span class="accent">personalizada</span>
+        </h2>
 
-            <div class="showcase-grid">
-              <div class="showcase-feature reveal delay-1">
-                <span class="showcase-number">01</span>
-                <div>
-                  <h3>Madera seleccionada</h3>
-                  <p>Elegís y trabajás con abeto en la tapa y palo santo en aros y fondo, como hacen los mejores luthiers.</p>
-                </div>
-              </div>
-              <div class="showcase-feature reveal delay-2">
-                <span class="showcase-number">02</span>
-                <div>
-                  <h3>Cuerpo tallado a mano</h3>
-                  <p>Gubia, cepillo y lija: aprendés a dar forma al instrumento con precisión artesanal.</p>
-                </div>
-              </div>
-              <div class="showcase-feature reveal delay-3">
-                <span class="showcase-number">03</span>
-                <div>
-                  <h3>Mástil y trastes</h3>
-                  <p>Diseño, encolado y nivelación de trastes para una acción perfecta en todo el diapasón.</p>
-                </div>
-              </div>
-              <div class="showcase-feature reveal delay-4">
-                <span class="showcase-number">04</span>
-                <div>
-                  <h3>Barniz y acabado</h3>
-                  <p>Técnicas de sellado, teñido y barniz final que realzan la madera y protegen el instrumento.</p>
-                </div>
+        <div class="stacked-cards reveal delay-2" data-stacked-cards>
+          <article class="stacked-card is-active">
+            <button class="stacked-card-trigger" type="button" aria-expanded="true">
+              <span class="stacked-card-number">01</span><span>Madera seleccionada</span>
+            </button>
+            <div class="stacked-card-content">
+              <img src="../assets/cards/card-01.png" alt="Selección y trabajo artesanal de la madera">
+              <div class="stacked-card-copy">
+                <h3>Madera seleccionada</h3>
+                <p>Elegís y trabajás con abeto en la tapa y palo santo en aros y fondo, como hacen los mejores luthiers.</p>
               </div>
             </div>
-          </div>
-
-          <!-- Imagen decorativa -->
-          <div class="reveal delay-2">
-            <img class="showcase-guitar-img" src="../assets/decor/Guitarra construida por estudiantes.png" alt="Guitarra construida por estudiantes">
-            <img src="onda-color.png" alt="" aria-hidden="true" style="margin-top:20px; opacity:.7;">
-          </div>
+          </article>
+          <article class="stacked-card">
+            <button class="stacked-card-trigger" type="button" aria-expanded="false">
+              <span class="stacked-card-number">02</span><span>Cuerpo tallado a mano</span>
+            </button>
+            <div class="stacked-card-content">
+              <img src="../assets/cards/card-02.png" alt="Cuerpo de guitarra construido artesanalmente">
+              <div class="stacked-card-copy">
+                <h3>Cuerpo tallado a mano</h3>
+                <p>Gubia, cepillo y lija: aprendés a dar forma al instrumento con precisión artesanal.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stacked-card">
+            <button class="stacked-card-trigger" type="button" aria-expanded="false">
+              <span class="stacked-card-number">03</span><span>Mástil y trastes</span>
+            </button>
+            <div class="stacked-card-content">
+              <img src="../assets/cards/card-03.png" alt="Trabajo del mástil y los trastes de una guitarra">
+              <div class="stacked-card-copy">
+                <h3>Mástil y trastes</h3>
+                <p>Diseño, encolado y nivelación de trastes para una acción perfecta en todo el diapasón.</p>
+              </div>
+            </div>
+          </article>
+          <article class="stacked-card">
+            <button class="stacked-card-trigger" type="button" aria-expanded="false">
+              <span class="stacked-card-number">04</span><span>Barniz y acabado</span>
+            </button>
+            <div class="stacked-card-content">
+              <img src="../assets/cards/card-04.png" alt="Proceso de barnizado y acabado de la guitarra">
+              <div class="stacked-card-copy">
+                <h3>Barniz y acabado</h3>
+                <p>Técnicas de sellado, teñido y barniz final que realzan la madera y protegen el instrumento.</p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1917,15 +2239,15 @@ max-width: 900px;
          SECCIÓN 3 — TEMARIO COMPLETO
     ============================================================ -->
     <section class="curriculum section-dark" id="curriculum">
-      <img class="decor-abs curriculum-decor-right" src="../assets/decor/circulo-guitarra-der.png" alt="" aria-hidden="true">
-      <img class="decor-abs curriculum-decor-left" src="../assets/decor/circulo-guitarra-izq.png" alt="" aria-hidden="true">
+      <img class="decor-abs learning-decor-left" src="../assets/decor/forma-vertical-izq.png" alt="" aria-hidden="true">
+      <img class="decor-abs learning-decor-right" src="../assets/decor/forma-vertical-der.png" alt="" aria-hidden="true">
       <div class="container">
         <p class="eyebrow yellow reveal">
           <span class="eyebrow-line"></span>
           Contenido del curso
         </p>
         <h2 class="section-title reveal delay-1">
-          5 módulos.<br><span class="accent">Todo incluido.</span>
+          Qué vas a <span class="accent">aprender</span>
         </h2>
         <p class="curriculum-lead reveal delay-2">
           Un recorrido claro y completo para avanzar desde la elección de materiales hasta el instrumento terminado, con videos, recursos descargables y acceso de por vida.
@@ -1960,13 +2282,6 @@ max-width: 900px;
               <p>Sellado, lijado, barniz y terminaciones para proteger la madera y lograr una identidad visual profesional.</p>
             </div>
           </article>
-          <article class="module-item">
-            <span class="module-number">05</span>
-            <div class="module-title-text">
-              <h3>Ajuste y calibración</h3>
-              <p>Instalación final, acción, afinación, intonación y puesta a punto para que la guitarra suene y responda bien.</p>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -1975,7 +2290,6 @@ max-width: 900px;
          SECCIÓN 4 — PARA QUIÉN / INSTRUCTOR
     ============================================================ -->
     <section class="for-who section-dark">
-      <img class="decor-abs for-who-decor-right" src="../assets/hero/instrumentos-hero.png" alt="" aria-hidden="true">
       <img class="decor-abs decor-side-left" src="../assets/decor/forma-vertical-izq.png" alt="" aria-hidden="true">
       <div class="container">
         <p class="eyebrow yellow reveal">
@@ -1983,7 +2297,7 @@ max-width: 900px;
           ¿Es para mí?
         </p>
         <h2 class="section-title reveal delay-1">
-          Para quien<br><span class="accent yellow-accent">quiere crear.</span>
+          Para quien<br><span class="accent yellow-accent">quiere crear</span>
         </h2>
 
         <div class="for-who-grid">
@@ -2006,27 +2320,6 @@ max-width: 900px;
             <div>
               <h4>Principiantes motivados</h4>
               <p>No necesitás experiencia previa: el recorrido te guía paso a paso desde cero.</p>
-            </div>
-          </div>
-          <div class="for-who-card reveal delay-2">
-            <div class="fwc-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M7 7v13M17 7v13M9 3h6l2 4H7z"/></svg></div>
-            <div>
-              <h4>Técnicos en luthería</h4>
-              <p>Querés ordenar procesos, profundizar criterios y profesionalizar tus terminaciones.</p>
-            </div>
-          </div>
-          <div class="for-who-card reveal delay-3">
-            <div class="fwc-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14"/><path d="M8 15l3-3 2 2 4-5"/></svg></div>
-            <div>
-              <h4>Emprendedores del oficio</h4>
-              <p>Buscás convertir la luthería en una propuesta seria, vendible y con identidad propia.</p>
-            </div>
-          </div>
-          <div class="for-who-card reveal delay-4">
-            <div class="fwc-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></div>
-            <div>
-              <h4>Coleccionistas</h4>
-              <p>Querés mirar un instrumento con otros ojos y reconocer qué lo hace especial.</p>
             </div>
           </div>
         </div>
@@ -2054,45 +2347,34 @@ max-width: 900px;
     <!-- ============================================================
          SECCIÓN 5 — MATERIALES Y HERRAMIENTAS
     ============================================================ -->
-    <section class="materials section-dark">
-      <img class="decor-abs materials-decor-left" src="../assets/decor/forma-vertical-izq.png" alt="" aria-hidden="true">
+    <section class="materials section-dark interactive-workshop">
       <div class="container">
-        <div class="materials-layout">
-          <div class="materials-image reveal">
-            <img src="../assets/decor/Herramientas de Lutería.png" alt="Herramientas de lutería">
-            <span class="materials-label">Kit de herramientas recomendado</span>
+        <div class="materials-heading reveal">
+          <p class="eyebrow yellow">
+            <span class="eyebrow-line"></span>
+            Qué vas a necesitar
+          </p>
+          <h2 class="section-title">Tu taller,<br><span class="accent">tu ritmo</span></h2>
+          <p class="lead-text">No necesitás un taller profesional para empezar. Con herramientas básicas y el espacio correcto podés construir tu primera guitarra a tu propio ritmo.</p>
+        </div>
+
+        <div class="workshop-stage reveal delay-1" data-hotspots>
+          <div class="workshop-visual">
+            <img src="../assets/decor/Herramientas de Lutería.png" alt="Herramientas esenciales para construir una guitarra">
+            <button class="hotspot hotspot-saw" type="button" aria-expanded="false" aria-label="Ver información sobre la sierra" data-title="Sierra" data-description="Permite realizar cortes limpios y controlados sin desgarrar las fibras." data-use="La usás para dimensionar piezas y preparar cortes precisos en las primeras etapas."><span></span></button>
+            <button class="hotspot hotspot-plane" type="button" aria-expanded="false" aria-label="Ver información sobre el cepillo" data-title="Cepillo" data-description="Aplana, rebaja y ajusta la madera de manera progresiva." data-use="Es clave para calibrar espesores y lograr superficies listas para el encolado."><span></span></button>
+            <button class="hotspot hotspot-chisel" type="button" aria-expanded="false" aria-label="Ver información sobre el formón" data-title="Formón" data-description="Retira material con precisión en encastres y zonas pequeñas." data-use="Lo empleás al preparar uniones estructurales y detalles del cuerpo y el mástil."><span></span></button>
+            <button class="hotspot hotspot-gouge" type="button" aria-expanded="false" aria-label="Ver información sobre la gubia" data-title="Gubia" data-description="Su filo curvo permite tallar volúmenes y transiciones suaves." data-use="Te acompaña en el modelado artesanal y en zonas donde una hoja plana no alcanza."><span></span></button>
+            <button class="hotspot hotspot-ruler" type="button" aria-expanded="false" aria-label="Ver información sobre la regla" data-title="Regla y escuadra" data-description="Aseguran referencias rectas, medidas consistentes y ángulos correctos." data-use="Las utilizás durante todo el curso para controlar simetría, escala y alineación."><span></span></button>
+            <button class="hotspot hotspot-clamp" type="button" aria-expanded="false" aria-label="Ver información sobre las prensas" data-title="Prensas" data-description="Mantienen las piezas inmóviles mientras el adhesivo alcanza su resistencia." data-use="Son fundamentales en el armado de la caja y las distintas etapas de encolado."><span></span></button>
           </div>
-
-          <div class="reveal delay-1">
-            <p class="eyebrow yellow">
-              <span class="eyebrow-line"></span>
-              Qué vas a necesitar
-            </p>
-            <h2 class="section-title">
-              Tu taller,<br><span class="accent">tu ritmo.</span>
-            </h2>
-            <p class="lead-text">
-              No necesitás un taller profesional para empezar. Con herramientas básicas y el espacio correcto podés construir tu primera guitarra. El curso incluye la lista de materiales detallada y alternativas económicas para cada herramienta.
-            </p>
-
-            <div class="tools-grid">
-              <div class="tool-item"><div class="tool-dot"></div><span>Sierra de corte fino</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Cepillo de mano</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Escoplos variados</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Gubia de violinero</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Prensas y tornillos</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Lijadoras manuales</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Pistola de barniz</span></div>
-              <div class="tool-item"><div class="tool-dot"></div><span>Regla y escuadra</span></div>
-            </div>
-
-            <div class="materials-note">
-              <p>
-                <strong>✦ Incluye PDF descargable</strong><br>
-                Lista completa de maderas, colas, barnices y herramientas con links a proveedores recomendados.
-              </p>
-            </div>
-          </div>
+          <aside class="hotspot-panel" aria-live="polite" aria-hidden="true">
+            <button class="hotspot-close" type="button" aria-label="Cerrar información">×</button>
+            <p class="hotspot-kicker">Herramienta</p>
+            <h3></h3>
+            <p class="hotspot-description"></p>
+            <p class="hotspot-use"></p>
+          </aside>
         </div>
       </div>
     </section>
@@ -2108,7 +2390,7 @@ max-width: 900px;
           Historias reales
         </p>
         <h2 class="section-title reveal delay-1">
-          Lo que dicen<br><span class="accent">quienes construyeron.</span>
+          Lo que dicen<br><span class="accent">quienes construyeron</span>
         </h2>
 
         <!-- Big testimonial -->
@@ -2186,15 +2468,13 @@ max-width: 900px;
          SECCIÓN 7 — FAQ
     ============================================================ -->
     <section class="faq">
-      <img class="decor-abs faq-decor-left" src="../assets/decor/circulo-guitarra-izq.png" alt="" aria-hidden="true">
-      <img class="decor-abs faq-decor-right" src="../assets/decor/circulo-guitarra-der.png" alt="" aria-hidden="true">
       <div class="container">
         <p class="eyebrow faq-eyebrow reveal">
           <span class="eyebrow-line"></span>
           Preguntas frecuentes
         </p>
         <h2 class="section-title reveal delay-1">
-          Todo lo que<br><span class="accent">querés saber.</span>
+          Todo lo que<br><span class="accent">querés saber</span>
         </h2>
 
         <div class="faq-list reveal delay-2">
@@ -2234,15 +2514,13 @@ max-width: 900px;
          SECCIÓN 8 — CTA FINAL
     ============================================================ -->
     <section class="final-cta" id="final-cta">
-      <img class="cta-guitar-decor" src="../assets/hero/guitarra-brillo.png" alt="" aria-hidden="true">
-      <img class="cta-onda-decor" src="../assets/decor/onda-color.png" alt="" aria-hidden="true">
       <div class="container final-cta-layout">
         <div class="reveal">
           <p class="eyebrow yellow">
             <span class="eyebrow-line"></span>
             Últimos días de lanzamiento
           </p>
-          <h2>Tu guitarra<br><em>te está esperando.</em></h2>
+          <h2>Tu guitarra<br><em>te está esperando</em></h2>
           <p class="lead-text">
             Empezá hoy el recorrido completo y construí un instrumento propio, con acompañamiento, recursos y acceso de por vida.
           </p>
@@ -2259,7 +2537,9 @@ max-width: 900px;
           </div>
         </div>
 
-        
+        <div class="final-cta-instrument reveal delay-1">
+          <img src="../assets/decor/foto-final-detalle.png" alt="Guitarra acústica terminada">
+        </div>
       </div>
     </section>
 
@@ -2342,7 +2622,56 @@ max-width: 900px;
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    
+    // ── Cards apiladas del resultado final
+    document.querySelectorAll('[data-stacked-cards]').forEach(group => {
+      const cards = [...group.querySelectorAll('.stacked-card')];
+      cards.forEach(card => {
+        const trigger = card.querySelector('.stacked-card-trigger');
+        trigger.addEventListener('click', () => {
+          if (card.classList.contains('is-active')) return;
+          cards.forEach(item => {
+            const isSelected = item === card;
+            item.classList.toggle('is-active', isSelected);
+            item.querySelector('.stacked-card-trigger').setAttribute('aria-expanded', String(isSelected));
+          });
+        });
+      });
+    });
+
+    // ── Hotspots interactivos del taller
+    document.querySelectorAll('[data-hotspots]').forEach(stage => {
+      const hotspots = [...stage.querySelectorAll('.hotspot')];
+      const panel = stage.querySelector('.hotspot-panel');
+      const title = panel.querySelector('h3');
+      const description = panel.querySelector('.hotspot-description');
+      const use = panel.querySelector('.hotspot-use');
+      const close = panel.querySelector('.hotspot-close');
+
+      const closePanel = () => {
+        hotspots.forEach(item => item.setAttribute('aria-expanded', 'false'));
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+      };
+
+      hotspots.forEach(hotspot => {
+        hotspot.addEventListener('click', () => {
+          const wasOpen = hotspot.getAttribute('aria-expanded') === 'true';
+          closePanel();
+          if (wasOpen) return;
+          hotspot.setAttribute('aria-expanded', 'true');
+          title.textContent = hotspot.dataset.title;
+          description.textContent = hotspot.dataset.description;
+          use.textContent = hotspot.dataset.use;
+          panel.classList.add('is-open');
+          panel.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      close.addEventListener('click', closePanel);
+      stage.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closePanel();
+      });
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca UI | Trastes</title>
+  <meta name="description" content="El sistema visual, los componentes y los recursos que definen la experiencia Trastes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Estilos exclusivos de la documentación. No alteran las páginas existentes. */
+    .ui-library-page{--ui-green:#083d39;--ui-orange:#ff4e17;--ui-cream:#f5ebdd;--ui-blue:#2d6dff;--ui-ink:#001817;background:var(--bg);color:var(--cream)}
+    .ui-library-page *{box-sizing:border-box}
+    .ui-library-page .site-header{background:rgba(5,47,46,.76);backdrop-filter:blur(12px)}
+    .ui-library-page .nav-links a[aria-current="page"]{color:var(--orange)}
+    .ui-library-page :where(a,button,[tabindex]):focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+    .ui-section--cream :where(a,button,[tabindex]):focus-visible,.ui-skip-link:focus-visible{outline-color:var(--orange)}
+    .ui-skip-link{position:fixed;left:18px;top:12px;z-index:1000;padding:12px 16px;background:var(--cream);color:var(--bg-2);font-weight:800;transform:translateY(-160%);transition:transform .2s ease}
+    .ui-skip-link:focus{transform:translateY(0)}
+    .ui-main{overflow:hidden}
+    .ui-section{position:relative;padding:112px 0;border-top:1px solid var(--line);content-visibility:auto;contain-intrinsic-size:auto 800px}
+    .ui-section.section-dark:before{z-index:0}
+    .ui-section>.container{position:relative;z-index:2}
+    .ui-section--cream{background:var(--cream);color:var(--bg-2)}
+    .ui-section--orange{background:var(--orange);color:var(--ui-ink)}
+    .ui-kicker{display:flex;align-items:center;gap:12px;margin:0 0 18px;color:var(--yellow);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+    .ui-kicker:before{content:"";width:34px;height:2px;background:currentColor}
+    .ui-section--cream .ui-kicker{color:var(--orange)}
+    .ui-heading{max-width:860px;margin:0;font-family:var(--font-display);font-size:clamp(48px,7vw,88px);font-weight:400;letter-spacing:.01em;line-height:.92;text-transform:uppercase}
+    .ui-heading span{color:var(--orange)}
+    .ui-section--orange .ui-kicker{color:var(--ui-ink)}
+    .ui-section--orange .ui-heading span{color:var(--cream)}
+    .ui-section--orange .ui-intro{color:var(--ui-ink)}
+    .ui-intro{max-width:640px;margin:24px 0 52px;color:var(--cream-2);font-size:16px;line-height:1.75}
+    .ui-section--cream .ui-intro{color:rgba(5,47,46,.72)}
+    .ui-label{display:block;margin-bottom:12px;color:var(--yellow);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+    .ui-surface{border:1px solid var(--line);background:rgba(5,47,46,.76);box-shadow:0 18px 48px rgba(0,0,0,.14)}
+
+    /* Hero */
+    .ui-hero{position:relative;min-height:680px;padding:150px 0 110px;display:flex;align-items:center;overflow:hidden}
+    .ui-hero-grid{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;text-align:center}
+    .ui-hero h1{margin:0;white-space:nowrap;font-family:var(--font-display);font-size:clamp(64px,10vw,150px);font-weight:400;line-height:.86;letter-spacing:.01em;text-transform:uppercase}
+    .ui-hero h1 span{display:inline;color:var(--orange)}
+    .ui-hero-copy{width:100%;max-width:1040px;margin-inline:auto}
+    .ui-hero-copy .ui-kicker{justify-content:center}
+    .ui-hero-copy .lead{width:100%!important;max-width:780px!important;margin:30px auto 0!important;font-size:18px;line-height:1.55;text-align:center!important}
+
+    /* Colores */
+    .ui-color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .ui-color-card{min-height:290px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:20px;transition:transform .3s ease,box-shadow .3s ease}
+    .ui-color-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.24)}
+    .ui-color-card h3{margin:0 0 4px;font-family:var(--font-display);font-size:31px;font-weight:400;text-transform:uppercase}
+    .ui-color-card code{font-family:var(--font-body);font-size:13px;font-weight:800}
+    .ui-color-card p{margin:18px 0 0;font-size:12px;font-weight:700;line-height:1.55}
+    .ui-color--green{background:#083d39;border:1px solid rgba(245,235,221,.2);color:#f5ebdd}
+    .ui-color--orange{background:#ff4e17;color:var(--ui-ink)}
+    .ui-color--cream{background:#f5ebdd;color:#052f2e}
+    .ui-color--blue{background:linear-gradient(to top,rgba(0,24,23,.88),rgba(0,24,23,.08) 72%),#2d6dff;color:#fff}
+    .ui-palette-combo{display:grid;grid-template-columns:1.5fr .7fr .8fr;grid-template-rows:120px 90px;margin-top:18px;border-radius:22px;overflow:hidden}
+    .ui-palette-combo span:nth-child(1){grid-row:1/3;background:#083d39}.ui-palette-combo span:nth-child(2){background:#ff4e17}.ui-palette-combo span:nth-child(3){background:#f5ebdd}.ui-palette-combo span:nth-child(4){background:#2d6dff}.ui-palette-combo span:nth-child(5){background:#f0b51e}
+
+    /* Tipografía */
+    .ui-type-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .ui-type-card{padding:42px;border-radius:22px}
+    .ui-display-sample{margin:38px 0;font-family:var(--font-display);font-size:clamp(60px,8vw,116px);font-weight:400;line-height:.84;text-transform:uppercase}
+    .ui-display-sample span{display:block;color:var(--orange)}
+    .ui-type-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+    .ui-type-meta span{padding:8px 11px;border:1px solid var(--line);color:var(--cream-2);font-size:10px;font-weight:700;text-transform:uppercase}
+    .ui-body-samples{display:grid;gap:24px;margin-top:34px}
+    .ui-body-samples article{padding-bottom:22px;border-bottom:1px solid var(--line)}
+    .ui-body-samples article:last-child{border:0;padding:0}
+    .ui-body-samples small{color:var(--orange);font-weight:800;text-transform:uppercase}
+    .ui-body-samples p{margin:8px 0 0;font-size:19px;line-height:1.55}
+    .ui-weight-medium{font-weight:500}.ui-weight-bold{font-weight:700}
+
+    /* Botones */
+    .ui-button-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .ui-button-demo{min-height:250px;padding:34px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;border-radius:20px}
+    .ui-button-demo .btn{width:auto}
+    .ui-btn-blue{background:#245be0}.ui-btn-blue:hover,.ui-btn-blue.is-hover{background:#174fe0;transform:translateY(-2px)}
+    .ui-button-demo .is-hover{background:var(--orange-2);transform:translateY(-2px);box-shadow:0 12px 28px rgba(234,65,14,.3)}
+    .ui-state-note{margin-top:20px;color:var(--cream-2);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+    /* Cards */
+    .ui-card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .ui-card{position:relative;min-height:300px;padding:34px;border-radius:22px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .ui-card:hover{transform:translateY(-5px);box-shadow:0 24px 52px rgba(0,0,0,.22)}
+    .ui-card h3{margin:18px 0 12px;font-family:var(--font-display);font-size:34px;font-weight:400;line-height:1;text-transform:uppercase}
+    .ui-card p{margin:0;color:var(--cream-2);font-size:14px;line-height:1.65}
+    .ui-card-number{display:grid;place-items:center;width:38px;height:38px;background:var(--orange);color:#fff;font-weight:900}
+    .ui-card-course{display:grid;grid-template-columns:.9fr 1.1fr;padding:0;background:var(--orange);color:#fff}
+    .ui-card-course img{width:100%;height:100%;object-fit:cover}.ui-card-course>div{padding:34px}.ui-card-course p{color:#ffe5d4}
+    .ui-card-tool{background:var(--cream);color:var(--bg-2)}.ui-card-tool p{color:rgba(5,47,46,.72)}
+    .ui-card-method{background:var(--bg-3);border:1px solid var(--line)}
+    .ui-card-expanded{grid-column:1/-1;display:grid;grid-template-columns:.72fr 1.28fr;padding:0;background:var(--bg-2);border:1px solid var(--line)}
+    .ui-card-expanded img{width:100%;height:100%;min-height:330px;object-fit:cover}.ui-card-expanded>div{padding:44px}
+    .ui-label--orange{color:var(--orange)}
+
+    /* Iconos */
+    .ui-icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+    .ui-icon-card{padding:28px 18px;text-align:center;border-radius:18px}
+    .ui-icon-card svg{width:34px;height:34px;margin:0 auto 18px;fill:none;stroke:var(--yellow);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .ui-icon-card strong{display:block;color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+    /* Grid, bordes y sombras */
+    .ui-grid-demo{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;padding:28px;border-radius:20px}
+    .ui-grid-demo span{height:180px;background:rgba(45,109,255,.22);border:1px solid rgba(45,109,255,.62);color:var(--cream);display:grid;place-items:center;font-size:10px;font-weight:800}
+    .ui-spec-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .ui-spec{padding:22px;border-left:3px solid var(--orange);background:rgba(5,47,46,.72)}
+    .ui-spec strong{display:block;font-family:var(--font-display);font-size:30px;font-weight:400}.ui-spec span{font-size:11px;color:var(--cream-2);text-transform:uppercase}
+    .ui-radius-grid,.ui-shadow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .ui-radius-card,.ui-shadow-card{min-height:200px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;background:var(--bg-3);border:1px solid var(--line)}
+    .ui-radius-card:nth-child(1){border-radius:12px}.ui-radius-card:nth-child(2){border-radius:20px}.ui-radius-card:nth-child(3){border-radius:28px}
+    .ui-shadow-grid{grid-template-columns:repeat(4,1fr)}
+    .ui-shadow-card{border-radius:18px}.ui-shadow-card:nth-child(1){box-shadow:0 12px 26px rgba(0,0,0,.14)}.ui-shadow-card:nth-child(2){box-shadow:0 22px 44px rgba(0,0,0,.24);transform:translateY(-4px)}.ui-shadow-card:nth-child(3){box-shadow:0 30px 70px rgba(0,0,0,.36)}.ui-shadow-card:nth-child(4){box-shadow:0 15px 34px rgba(234,65,14,.3);border-color:rgba(234,65,14,.55)}
+
+    /* Galerías */
+    .ui-gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .ui-gallery figure{position:relative;margin:0;min-height:300px;border-radius:22px;overflow:hidden;background:var(--bg-2);border:1px solid var(--line)}
+    .ui-gallery figure:nth-child(1),.ui-gallery figure:nth-child(4){grid-column:span 7}.ui-gallery figure:nth-child(2),.ui-gallery figure:nth-child(3){grid-column:span 5}
+    .ui-gallery img{width:100%;height:100%;min-height:300px;object-fit:contain;padding:20px;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+    .ui-gallery figure:hover img{transform:scale(1.035)}
+    .ui-gallery figcaption{position:absolute;left:18px;bottom:18px;padding:9px 12px;background:rgba(5,47,46,.88);color:#fff;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .ui-texture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .ui-texture-card{position:relative;min-height:300px;padding:28px;border-radius:22px;overflow:hidden;background-color:var(--bg-2);border:1px solid var(--line);display:flex;align-items:flex-end}
+    .ui-texture-card:nth-child(1){background-image:url('assets/textures/plano-guitarra.png');background-size:650px}.ui-texture-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8}.ui-texture-card strong{position:relative;z-index:2;padding:9px 12px;background:rgba(5,47,46,.9);font-size:11px;text-transform:uppercase}
+
+    /* Interacciones */
+    .ui-interactive-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .ui-demo-panel{padding:30px;border-radius:22px}
+    .ui-demo-panel>h3{margin:0 0 24px;font-family:var(--font-display);font-size:31px;font-weight:400;text-transform:uppercase}
+    .ui-accordion-item{border-top:1px solid var(--line)}.ui-accordion-item:last-child{border-bottom:1px solid var(--line)}
+    .ui-accordion-trigger{width:100%;padding:18px 0;display:flex;justify-content:space-between;border:0;background:none;color:var(--cream);font:700 14px var(--font-body);text-align:left;cursor:pointer}
+    .ui-accordion-trigger span{color:var(--orange);font-size:20px}.ui-accordion-content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}.ui-accordion-content>div{overflow:hidden}.ui-accordion-content p{margin:0;padding:0 0 18px;color:var(--cream-2);font-size:13px;line-height:1.6}.ui-accordion-item.is-open .ui-accordion-content{grid-template-rows:1fr}
+    .ui-hotspot-stage{position:relative;min-height:260px;border-radius:18px;background:linear-gradient(135deg,#0d4a46,#052f2e);overflow:hidden}.ui-hotspot-stage:before,.ui-hotspot-stage:after{content:"";position:absolute;background:rgba(245,234,216,.12)}.ui-hotspot-stage:before{width:70%;height:3px;left:15%;top:50%;transform:rotate(-18deg)}.ui-hotspot-stage:after{width:3px;height:70%;left:50%;top:15%;transform:rotate(24deg)}
+    .ui-hotspot{position:absolute;width:34px;height:34px;border:0;border-radius:50%;background:var(--yellow);color:var(--bg-2);font-weight:900;cursor:pointer;box-shadow:0 0 0 8px rgba(240,181,30,.14);transition:transform .2s ease}.ui-hotspot:hover,.ui-hotspot.is-active{transform:scale(1.12)}.ui-hotspot:nth-of-type(1){left:20%;top:25%}.ui-hotspot:nth-of-type(2){left:55%;top:44%}.ui-hotspot:nth-of-type(3){right:16%;bottom:18%}
+    .ui-hotspot-output{position:absolute;left:18px;right:18px;bottom:16px;padding:12px 14px;background:rgba(5,47,46,.92);font-size:12px}
+    .ui-expand-list{display:grid;gap:10px}.ui-expand-card{width:100%;padding:18px;border:1px solid var(--line);background:var(--bg-3);color:var(--cream);font-family:var(--font-body);text-align:left;cursor:pointer;transition:.3s ease}.ui-expand-card strong{display:block}.ui-expand-card>span{display:block;max-height:0;margin:0;overflow:hidden;color:var(--cream-2);font-size:13px;line-height:1.6;transition:max-height .35s ease,margin .35s ease}.ui-expand-card.is-open{border-color:var(--orange);transform:translateY(-2px)}.ui-expand-card.is-open>span{max-height:90px;margin-top:10px}
+    .ui-tabs{display:flex;gap:8px;margin-bottom:18px}.ui-tab{padding:10px 14px;border:1px solid var(--line);background:transparent;color:var(--cream);font-weight:800;cursor:pointer}.ui-tab.is-active{background:var(--orange);border-color:var(--orange)}.ui-tab-panel{display:none;min-height:120px;padding:20px;background:var(--bg-3);color:var(--cream-2);font-size:14px;line-height:1.6}.ui-tab-panel.is-active{display:block;animation:uiFade .35s ease}
+    @keyframes uiFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    /* Responsive */
+    .ui-responsive-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:end;gap:22px}
+    .ui-device{padding:24px;background:rgba(5,47,46,.96);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:18px;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.15)}.ui-device-frame{margin:0 auto 18px;border:2px solid var(--cream);border-radius:8px;display:grid;place-items:center;color:var(--orange);font-weight:900}.ui-device--desktop .ui-device-frame{width:100%;height:150px}.ui-device--tablet .ui-device-frame{width:72%;height:135px}.ui-device--mobile .ui-device-frame{width:43%;height:120px}.ui-flow-arrow{padding-bottom:85px;color:var(--ui-ink);font-size:28px}
+
+    /* Textos secundarios y numeraciones sobre superficies verdes */
+    .ui-section.section-dark .ui-kicker,
+    .ui-section.section-dark .ui-intro,
+    .ui-hero.section-dark .lead,
+    .ui-surface :where(p,.ui-state-note,.ui-tab-panel,.ui-hotspot-output,.ui-expand-card>span,.ui-accordion-content p),
+    .ui-card-method p,
+    .ui-card-expanded p,
+    .ui-spec span,
+    .ui-grid-demo span,
+    .ui-color--green p{color:#fff}
+
+    @media (max-width:980px){
+      .ui-hero{min-height:620px;padding:130px 0 90px}
+      .ui-color-grid,.ui-button-grid{grid-template-columns:repeat(2,1fr)}.ui-type-layout,.ui-interactive-grid,.ui-card-grid{grid-template-columns:1fr}.ui-card-expanded{grid-column:auto}.ui-icon-grid{grid-template-columns:repeat(3,1fr)}.ui-shadow-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:768px){
+      .ui-section{padding:78px 0}.ui-heading{font-size:clamp(44px,13vw,66px)}.ui-intro{margin-bottom:36px;font-size:15px}
+      .ui-hero{min-height:560px;padding:120px 0 84px}.ui-hero h1{font-size:clamp(44px,12vw,72px)}.ui-hero-copy .lead{font-size:16px}
+      .ui-button-grid,.ui-radius-grid,.ui-texture-grid{grid-template-columns:1fr}.ui-card-grid{grid-template-columns:1fr}.ui-card-course,.ui-card-expanded{grid-column:auto;grid-template-columns:1fr}.ui-card-course img,.ui-card-expanded img{height:260px;min-height:0}.ui-card-expanded>div{padding:34px}
+      .ui-gallery figure,.ui-gallery figure:nth-child(n){grid-column:span 12}.ui-grid-demo{gap:5px;padding:16px}.ui-grid-demo span{height:120px;font-size:8px}.ui-spec-row{grid-template-columns:1fr}.ui-responsive-flow{grid-template-columns:1fr;align-items:center}.ui-flow-arrow{padding:0;text-align:center;transform:rotate(90deg)}
+    }
+    @media (max-width:520px){
+      .ui-color-grid,.ui-icon-grid,.ui-shadow-grid{grid-template-columns:1fr}.ui-color-card{min-height:240px}.ui-type-card{padding:28px}.ui-display-sample{font-size:58px}.ui-button-demo{min-height:210px}.ui-grid-demo{grid-template-columns:repeat(6,1fr)}.ui-grid-demo span{height:70px}.ui-palette-combo{grid-template-columns:1fr 1fr;grid-template-rows:100px 80px 80px}.ui-palette-combo span:first-child{grid-row:auto;grid-column:1/-1}.ui-icon-card{padding:24px}.ui-gallery img{min-height:250px}.ui-hotspot-stage{min-height:240px}
+    }
+    @media (prefers-reduced-motion:reduce){.ui-library-page *, .ui-library-page *:before, .ui-library-page *:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body class="ui-library-page">
+  <a class="ui-skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="Trastes inicio"><span class="brand-mark">T</span><span>TRASTES</span></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="index.html#cursos">Cursos</a>
+      <a href="index.html#beneficios">Comunidad</a>
+      <a href="index.html#metodo">Nosotros</a>
+      <a href="ui-library.html" aria-current="page">Biblioteca UI</a>
+    </nav>
+    <a class="btn btn-small" href="detalle-curso/curso-guitarra-final.html">Inscríbete ya</a>
+  </header>
+
+  <main class="ui-main" id="main-content" tabindex="-1">
+    <section class="ui-hero section-dark" aria-labelledby="ui-title">
+      <div class="container ui-hero-grid">
+        <div class="ui-hero-copy reveal">
+          <p class="ui-kicker">Design system</p>
+          <h1 id="ui-title">Biblioteca <span>UI</span></h1>
+          <p class="lead">Todo el lenguaje visual que define la identidad de Trastes. Desde la tipografía hasta los componentes interactivos utilizados para construir esta experiencia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="colores">
+      <div class="container">
+        <p class="ui-kicker">01 · Fundamentos</p><h2 class="ui-heading">Paleta de <span>colores</span></h2>
+        <p class="ui-intro">Una paleta de alto contraste inspirada en el taller: profundidad, materia, energía y precisión.</p>
+        <div class="ui-color-grid reveal">
+          <article class="ui-color-card ui-color--green"><h3>Verde principal</h3><code>#083D39</code><p>Fondos · Navbar · Cards</p></article>
+          <article class="ui-color-card ui-color--orange"><h3>Naranja</h3><code>#FF4E17</code><p>CTAs · Hover · Highlights</p></article>
+          <article class="ui-color-card ui-color--cream"><h3>Crema</h3><code>#F5EBDD</code><p>Títulos · Fondos claros</p></article>
+          <article class="ui-color-card ui-color--blue"><h3>Azul</h3><code>#2D6DFF</code><p>Botones secundarios · Acentos</p></article>
+        </div>
+        <div class="ui-palette-combo reveal" aria-label="Composición de la paleta de Trastes"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--cream" id="tipografia">
+      <div class="container">
+        <p class="ui-kicker">02 · Fundamentos</p><h2 class="ui-heading">Sistema <span>tipográfico</span></h2>
+        <p class="ui-intro">Una voz display contundente se combina con una tipografía de lectura neutral y precisa.</p>
+        <div class="ui-type-layout">
+          <article class="ui-type-card ui-surface reveal"><span class="ui-label">Display · Anton</span><div class="ui-display-sample">Metodología <span>de trabajo</span></div><div class="ui-type-meta"><span>Títulos</span></div></article>
+          <article class="ui-type-card ui-surface reveal delay-1"><span class="ui-label">Body font · Inter</span><div class="ui-body-samples"><article><small>Regular · 400</small><p>La precisión nace de comprender cada etapa del proceso.</p></article><article><small>Medium · 500</small><p class="ui-weight-medium">Materiales honestos, herramientas reales y práctica constante.</p></article><article><small>Bold · 700</small><p class="ui-weight-bold">Construí el instrumento que soñaste.</p></article></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="botones">
+      <div class="container">
+        <p class="ui-kicker">03 · Componentes</p><h2 class="ui-heading">Botones y <span>acciones</span></h2>
+        <p class="ui-intro">Acciones claras, contrastadas y con una respuesta breve que confirma la interacción.</p>
+        <div class="ui-button-grid">
+          <article class="ui-button-demo ui-surface reveal"><span class="ui-label">Primary button</span><a class="btn" href="#botones">Inscribirme</a><span class="ui-state-note">Default · Hover elevación</span></article>
+          <article class="ui-button-demo ui-surface reveal delay-1"><span class="ui-label">Secondary button</span><a class="btn ui-btn-blue" href="#botones">Ver temario</a><span class="ui-state-note">Acento azul</span></article>
+          <article class="ui-button-demo ui-surface reveal delay-2"><span class="ui-label">Ghost button</span><a class="btn btn-ghost" href="index.html">← Volver</a><span class="ui-state-note">Borde de bajo contraste</span></article>
+          <article class="ui-button-demo ui-surface reveal"><span class="ui-label">Hover preview</span><button class="btn is-hover" type="button">Inscribirme</button><span class="ui-state-note">Estado demostrado</span></article>
+          <article class="ui-button-demo ui-surface reveal delay-1"><span class="ui-label">Secondary hover</span><button class="btn ui-btn-blue is-hover" type="button">Ver temario</button><span class="ui-state-note">Elevación + color</span></article>
+          <article class="ui-button-demo ui-surface reveal delay-2"><span class="ui-label">Compact action</span><button class="btn btn-small" type="button">Explorar curso</button><span class="ui-state-note">Navegación y cards</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="cards">
+      <div class="container">
+        <p class="ui-kicker">04 · Componentes</p><h2 class="ui-heading">Sistema de <span>cards</span></h2>
+        <p class="ui-intro">Contenedores reales del proyecto adaptados a distintas jerarquías y densidades de información.</p>
+        <div class="ui-card-grid">
+          <article class="ui-card ui-card-course reveal"><img src="assets/cards/luthier-violin.png" width="1023" height="1537" alt="Luthier trabajando" loading="lazy" decoding="async"><div><span class="tag">Curso</span><h3>Construye tu guitarra</h3><p>Proceso completo, recursos y acompañamiento profesional.</p></div></article>
+          <article class="ui-card ui-card-method reveal delay-1"><span class="ui-card-number">01</span><h3>Card beneficio</h3><p>Una ventaja concreta presentada con número, título y una descripción breve.</p></article>
+          <article class="ui-card ui-card-method reveal"><span class="ui-label">Metodología</span><b class="ui-card-number">03</b><h3>Construí en tu taller</h3><p>Aplicá cada herramienta en tu propio instrumento.</p></article>
+          <article class="ui-card ui-card-tool reveal delay-1"><span class="ui-label ui-label--orange">Herramienta</span><h3>Prensa de luthier</h3><p>Sujeción precisa para encolados y armado estructural.</p></article>
+          <article class="ui-card ui-card-expanded reveal"><img src="assets/cards/card-04.png" width="993" height="1536" alt="Proceso de barniz y acabado" loading="lazy" decoding="async"><div><span class="ui-label">Card expandida · 04</span><h3>Barniz y acabado</h3><p>Preparación de superficie, sellado, capas de terminación y pulido final para proteger el instrumento y revelar el carácter de la madera.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--cream" id="iconografia">
+      <div class="container">
+        <p class="ui-kicker">05 · Recursos</p><h2 class="ui-heading">Iconografía <span>funcional</span></h2>
+        <p class="ui-intro">Trazos simples, legibles y consistentes que acompañan la información sin competir con ella.</p>
+        <div class="ui-icon-grid">
+          <article class="ui-icon-card ui-surface"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><strong>Tiempo</strong></article>
+          <article class="ui-icon-card ui-surface"><svg viewBox="0 0 24 24"><path d="M6 3h12v12H6zM9 15v6l3-2 3 2v-6"/><path d="m9 9 2 2 4-4"/></svg><strong>Certificado</strong></article>
+          <article class="ui-icon-card ui-surface"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 2-5 5-5s5 2 5 5M14 15c3-1 6 1 6 4"/></svg><strong>Comunidad</strong></article>
+          <article class="ui-icon-card ui-surface"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><strong>Descarga</strong></article>
+          <article class="ui-icon-card ui-surface"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3-7 8-7s8 3 8 7"/></svg><strong>Usuario</strong></article>
+          <article class="ui-icon-card ui-surface"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><strong>Curso</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="grid">
+      <div class="container">
+        <p class="ui-kicker">06 · Layout</p><h2 class="ui-heading">Grid de <span>12 columnas</span></h2>
+        <p class="ui-intro">Una estructura flexible mantiene la alineación del contenido y permite composiciones editoriales amplias.</p>
+        <div class="ui-grid-demo ui-surface" aria-label="Esquema de doce columnas"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span></div>
+        <div class="ui-spec-row"><div class="ui-spec"><strong>12</strong><span>Columnas</span></div><div class="ui-spec"><strong>18–24 px</strong><span>Gutters</span></div><div class="ui-spec"><strong>1180 px</strong><span>Max width</span></div></div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--cream" id="bordes">
+      <div class="container">
+        <p class="ui-kicker">07 · Superficies</p><h2 class="ui-heading">Radios y <span>bordes</span></h2><p class="ui-intro">Radios progresivos suavizan el lenguaje técnico sin perder precisión.</p>
+        <div class="ui-radius-grid"><article class="ui-radius-card"><span class="ui-label">Radio compacto</span><strong>12 px</strong></article><article class="ui-radius-card"><span class="ui-label">Card estándar</span><strong>20 px</strong></article><article class="ui-radius-card"><span class="ui-label">Bloque editorial</span><strong>28 px</strong></article></div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="sombras">
+      <div class="container">
+        <p class="ui-kicker">08 · Superficies</p><h2 class="ui-heading">Sistema de <span>sombras</span></h2><p class="ui-intro">Profundidad controlada para separar niveles, enfatizar estados y sostener el contraste.</p>
+        <div class="ui-shadow-grid"><article class="ui-shadow-card"><span class="ui-label">Card</span><strong>Elevación suave</strong></article><article class="ui-shadow-card"><span class="ui-label">Hover</span><strong>Respuesta activa</strong></article><article class="ui-shadow-card"><span class="ui-label">Modal</span><strong>Máxima profundidad</strong></article><article class="ui-shadow-card"><span class="ui-label">Botón</span><strong>Acento naranja</strong></article></div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="ilustraciones">
+      <div class="container">
+        <p class="ui-kicker">09 · Lenguaje editorial</p><h2 class="ui-heading">Ilustraciones <span>expresivas</span></h2><p class="ui-intro">Recursos originales que conectan oficio, experimentación y una estética artesanal contemporánea.</p>
+        <div class="ui-gallery">
+          <figure><img src="assets/hero/instrumentos-hero.png" width="1024" height="1536" alt="Ilustración del hero" loading="lazy" decoding="async"><figcaption>Hero</figcaption></figure>
+          <figure><img src="assets/hero/guitarra-brillo.png" width="1024" height="1536" alt="Kit de guitarra" loading="lazy" decoding="async"><figcaption>Kit guitarra</figcaption></figure>
+          <figure><img src="assets/cards/herramientas.png" width="1023" height="1537" alt="Herramientas de lutería" loading="lazy" decoding="async"><figcaption>Herramientas</figcaption></figure>
+          <figure><img src="assets/hero/foto-hero-detalle.png" width="1536" height="1024" alt="Luthier con guitarra" loading="lazy" decoding="async"><figcaption>Luthier</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="texturas">
+      <div class="container">
+        <p class="ui-kicker">10 · Lenguaje editorial</p><h2 class="ui-heading">Texturas y <span>recursos</span></h2><p class="ui-intro">Capas gráficas que aportan materia, recorrido y profundidad a las composiciones.</p>
+        <div class="ui-texture-grid"><article class="ui-texture-card"><strong>Textura de plano técnico</strong></article><article class="ui-texture-card"><img src="assets/decor/guitarra-circular.png" width="1536" height="1024" alt="Forma orgánica decorativa circular" loading="lazy" decoding="async"><strong>Formas orgánicas decorativas</strong></article><article class="ui-texture-card"><img src="assets/decor/onda-color.png" width="1536" height="1024" alt="Forma orgánica decorativa de color" loading="lazy" decoding="async"><strong>Formas orgánicas decorativas</strong></article></div>
+      </div>
+    </section>
+
+    <section class="ui-section section-dark" id="interactivos">
+      <div class="container">
+        <p class="ui-kicker">11 · Comportamiento</p><h2 class="ui-heading">Componentes <span>interactivos</span></h2><p class="ui-intro">Patrones reales, simples y enfocados. Todos los ejemplos funcionan sin utilizar imágenes.</p>
+        <div class="ui-interactive-grid">
+          <article class="ui-demo-panel ui-surface"><h3>Accordion</h3><div class="ui-accordion" data-ui-accordion><div class="ui-accordion-item is-open"><button class="ui-accordion-trigger" type="button" aria-expanded="true">01 · Selección de materiales <span>+</span></button><div class="ui-accordion-content"><div><p>Maderas, espesores y criterios para comenzar el proyecto.</p></div></div></div><div class="ui-accordion-item"><button class="ui-accordion-trigger" type="button" aria-expanded="false">02 · Construcción <span>+</span></button><div class="ui-accordion-content"><div><p>Procesos estructurales organizados paso a paso.</p></div></div></div><div class="ui-accordion-item"><button class="ui-accordion-trigger" type="button" aria-expanded="false">03 · Acabado <span>+</span></button><div class="ui-accordion-content"><div><p>Protección, pulido y terminación final del instrumento.</p></div></div></div></div></article>
+          <article class="ui-demo-panel ui-surface"><h3>Hotspots</h3><div class="ui-hotspot-stage" data-ui-hotspots><button class="ui-hotspot is-active" type="button" data-label="Punto 01 · Precisión" aria-label="Mostrar precisión" aria-pressed="true">1</button><button class="ui-hotspot" type="button" data-label="Punto 02 · Ensamble" aria-label="Mostrar ensamble" aria-pressed="false">2</button><button class="ui-hotspot" type="button" data-label="Punto 03 · Acabado" aria-label="Mostrar acabado" aria-pressed="false">3</button><div class="ui-hotspot-output" aria-live="polite">Punto 01 · Precisión</div></div></article>
+          <article class="ui-demo-panel ui-surface"><h3>Cards expandibles</h3><div class="ui-expand-list" data-ui-expand><button class="ui-expand-card is-open" type="button" aria-expanded="true"><strong>01 · Diagnóstico</strong><span>Identificar el estado actual antes de intervenir.</span></button><button class="ui-expand-card" type="button" aria-expanded="false"><strong>02 · Proceso</strong><span>Elegir herramientas y ordenar las operaciones.</span></button><button class="ui-expand-card" type="button" aria-expanded="false"><strong>03 · Resultado</strong><span>Comprobar terminación, estabilidad y sonido.</span></button></div></article>
+          <article class="ui-demo-panel ui-surface"><h3>Tabs</h3><div data-ui-tabs><div class="ui-tabs" role="tablist" aria-label="Contenido del sistema"><button class="ui-tab is-active" id="tab-materiales" type="button" role="tab" data-tab="materiales" aria-controls="panel-materiales" aria-selected="true" tabindex="0">Materiales</button><button class="ui-tab" id="tab-tecnica" type="button" role="tab" data-tab="tecnica" aria-controls="panel-tecnica" aria-selected="false" tabindex="-1">Técnica</button><button class="ui-tab" id="tab-comunidad" type="button" role="tab" data-tab="comunidad" aria-controls="panel-comunidad" aria-selected="false" tabindex="-1">Comunidad</button></div><div class="ui-tab-panel is-active" id="panel-materiales" role="tabpanel" aria-labelledby="tab-materiales" data-panel="materiales" tabindex="0">Planos, listas y referencias descargables para trabajar con claridad.</div><div class="ui-tab-panel" id="panel-tecnica" role="tabpanel" aria-labelledby="tab-tecnica" data-panel="tecnica" tabindex="0">Lecciones precisas que explican cada decisión del proceso.</div><div class="ui-tab-panel" id="panel-comunidad" role="tabpanel" aria-labelledby="tab-comunidad" data-panel="comunidad" tabindex="0">Acompañamiento y devoluciones para mejorar cada avance.</div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--orange" id="responsive">
+      <div class="container">
+        <p class="ui-kicker">12 · Adaptabilidad</p><h2 class="ui-heading">Diseñado para <span>cada pantalla</span></h2><p class="ui-intro">La jerarquía, el ritmo y la legibilidad se conservan mientras el sistema cambia de escala.</p>
+        <div class="ui-responsive-flow"><article class="ui-device ui-device--desktop"><div class="ui-device-frame">12 COL</div><strong>Desktop</strong></article><span class="ui-flow-arrow">→</span><article class="ui-device ui-device--tablet"><div class="ui-device-frame">8 COL</div><strong>Tablet</strong></article><span class="ui-flow-arrow">→</span><article class="ui-device ui-device--mobile"><div class="ui-device-frame">4 COL</div><strong>Mobile</strong></article></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© 2026 Trastes. Formación online en luthería.</p></footer>
+  <script src="js/script.js"></script>
+  <script>
+    document.querySelectorAll('[data-ui-accordion]').forEach(group => {
+      group.querySelectorAll('.ui-accordion-trigger').forEach(trigger => trigger.addEventListener('click', () => {
+        const selected = trigger.closest('.ui-accordion-item');
+        const willOpen = !selected.classList.contains('is-open');
+        group.querySelectorAll('.ui-accordion-item').forEach(item => {
+          item.classList.remove('is-open');
+          item.querySelector('.ui-accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) { selected.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); }
+      }));
+    });
+
+    document.querySelectorAll('[data-ui-hotspots]').forEach(stage => {
+      const output = stage.querySelector('.ui-hotspot-output');
+      stage.querySelectorAll('.ui-hotspot').forEach(point => point.addEventListener('click', () => {
+        stage.querySelectorAll('.ui-hotspot').forEach(item => {
+          item.classList.remove('is-active');
+          item.setAttribute('aria-pressed', 'false');
+        });
+        point.classList.add('is-active');
+        point.setAttribute('aria-pressed', 'true');
+        output.textContent = point.dataset.label;
+      }));
+    });
+
+    document.querySelectorAll('[data-ui-expand]').forEach(group => {
+      const activate = card => {
+        group.querySelectorAll('.ui-expand-card').forEach(item => {
+          const isSelected = item === card;
+          item.classList.toggle('is-open', isSelected);
+          item.setAttribute('aria-expanded', String(isSelected));
+        });
+      };
+      group.querySelectorAll('.ui-expand-card').forEach(card => card.addEventListener('click', () => activate(card)));
+    });
+
+    document.querySelectorAll('[data-ui-tabs]').forEach(group => {
+      const tabs = [...group.querySelectorAll('.ui-tab')];
+      const activateTab = tab => {
+        tabs.forEach(item => {
+          item.classList.remove('is-active');
+          item.setAttribute('aria-selected', 'false');
+          item.setAttribute('tabindex', '-1');
+        });
+        group.querySelectorAll('.ui-tab-panel').forEach(panel => panel.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+        group.querySelector(`[data-panel="${tab.dataset.tab}"]`)?.classList.add('is-active');
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          let nextIndex = index;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') nextIndex = 0;
+          if (event.key === 'End') nextIndex = tabs.length - 1;
+          activateTab(tabs[nextIndex]);
+          tabs[nextIndex].focus();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

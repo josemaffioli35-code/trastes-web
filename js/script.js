@@ -61,13 +61,49 @@ if(courseOptions.length && coursePanels.length){
   courseOptions.forEach(option => {
     option.addEventListener('click', () => {
       const selected = option.dataset.course;
+      const currentOption = document.querySelector('.course-option.active');
+      const currentPanel = document.querySelector('.course-feature-panel.active');
+      const nextPanel = document.querySelector(`[data-course-panel="${selected}"]`);
 
+      if(option === currentOption || !nextPanel) return;
+
+      const previousPositions = new Map();
       courseOptions.forEach(item => {
-        item.classList.toggle('active', item.dataset.course === selected);
+        if(!item.classList.contains('active')){
+          previousPositions.set(item, item.getBoundingClientRect());
+        }
       });
 
-      coursePanels.forEach(panel => {
-        panel.classList.toggle('active', panel.dataset.coursePanel === selected);
+      currentOption?.classList.remove('active');
+      option.classList.add('active');
+      currentPanel?.classList.remove('active');
+      nextPanel.classList.add('active');
+
+      courseOptions.forEach(item => {
+        if(item.classList.contains('active')) return;
+
+        const nextPosition = item.getBoundingClientRect();
+        const previousPosition = previousPositions.get(item);
+
+        if(previousPosition){
+          const deltaX = previousPosition.left - nextPosition.left;
+          const deltaY = previousPosition.top - nextPosition.top;
+          item.animate(
+            [
+              {transform:`translate(${deltaX}px, ${deltaY}px)`},
+              {transform:'translate(0, 0)'}
+            ],
+            {duration:500,easing:'cubic-bezier(.22,1,.36,1)'}
+          );
+        }else{
+          item.animate(
+            [
+              {opacity:0,transform:'translateY(-46px)'},
+              {opacity:1,transform:'translateY(0)'}
+            ],
+            {duration:500,easing:'cubic-bezier(.22,1,.36,1)'}
+          );
+        }
       });
     });
   });
@@ -77,21 +113,22 @@ if(courseOptions.length && coursePanels.length){
 const processDots = document.querySelectorAll('.process-dot');
 const processSteps = document.querySelectorAll('.process-step');
 
-function activateProcessStep(index){
+function activateProcessStep(stepId){
   if(!processDots.length || !processSteps.length) return;
 
-  processDots.forEach(dot => dot.classList.remove('active'));
-  processSteps.forEach(step => step.classList.remove('active'));
-
-  processDots[index]?.classList.add('active');
-  processSteps[index]?.classList.add('active');
+  processDots.forEach(dot => {
+    dot.classList.toggle('active', dot.dataset.process === stepId);
+  });
+  processSteps.forEach(step => {
+    step.classList.toggle('active', step.classList.contains(`step-${stepId}`));
+  });
 }
 
 if(processDots.length && processSteps.length){
-  activateProcessStep(0);
+  activateProcessStep('01');
 
-  processDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => activateProcessStep(index));
+  processDots.forEach(dot => {
+    dot.addEventListener('click', () => activateProcessStep(dot.dataset.process));
   });
 }
 
